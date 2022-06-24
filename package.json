@@ -1,0 +1,27 @@
+{
+  "name": "bargainvin",
+  "version": "1.0.0",
+  "description": "A new way to buy cars.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DCXan/BargainVIN.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DCXan/BargainVIN/issues"
+  },
+  "homepage": "https://github.com/DCXan/BargainVIN#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "mustache-express": "^1.3.2",
+    "pg": "^8.7.3",
+    "sequelize": "^6.21.0"
+  }
+}

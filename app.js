@@ -23,8 +23,8 @@ app.use('/account', accountRouter)
 const buyerRouter = require('./routes/buyer')
 app.use('/buyer', buyerRouter) // authenticationMW IMPLEMENT WHEN LOG IN FEATURE IS READY
 
-const dealerRouter = require('./routes/buyer')
-app.use('/buyer', dealerRouter) // authenticationMW IMPLEMENT WHEN LOG IN FEATURE IS READY
+const dealerRouter = require('./routes/dealer')
+app.use('/dealer', dealerRouter) // authenticationMW IMPLEMENT WHEN LOG IN FEATURE IS READY
 
 
 const mustacheExpress = require('mustache-express')

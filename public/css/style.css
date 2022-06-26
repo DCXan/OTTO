@@ -1,3 +1,5 @@
-body {
-    background-color: rgb(68, 75, 76);
+@media (max-width: 767.98px) {
+    #tagline {
+        font-size: 20px;
+    }
 }

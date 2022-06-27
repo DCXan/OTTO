@@ -65,14 +65,14 @@
           <h3 class="mt-4 d-flex justify-content-center">Account Registration</h3>
           <form method="POST" action="/account/register">
 
+            <!-- First and Last name fields -->
+
             <div class="row">
               <div class="col-6">
-                
                 <div class="form-group mt-4">
                   <label for="firstName">First Name:</label>
                   <input type="text" class="form-control rounded-5 mt-2" id="firstName" placeholder="First name" name="firstName">
                 </div>
-
               </div>
               <div class="col-6">
                 
@@ -80,52 +80,35 @@
                   <label for="lastName">Last Name:</label>
                   <input type="text" class="form-control rounded-5 mt-2" id="lastName" placeholder="Last name" name="lastName">
                 </div>
-                <div class ="form-group mt-3">
-                 <input type ="radio" id="Customer" value ="true" name="customer_dealership" required >
-                      <label for="Customer">Customer</label>
-                    <input type ="radio" id="Dealership" value ="false"  name="customer_dealership" required>
-                      <label for= "Dealership" >Dealership</label>
-                </div>
-                
-<<<<<<< HEAD
-                <div class="row">
-    
-                  <div class="col-6">
-
-                   
-                    <button class="btn btn-danger mt-3 rounded-0 text-nowrap">Create Account</button>       
-      
-      
-                  </div>
-                </form>
-                  <div class="col-6 d-flex justify-content-end justify-text-end">
-      
-                    <form method="GET" action="/account/login">
-                      <!--<small id="register-msg" class="text-nowrap px-3 d-flex align-self-center">Don't have an account?</small> -->
-                      <button class="btn btn-secondary mt-3 rounded-0 text-nowrap">Back to Log In</button>
-                    </form>
-                  </div>
-                </div>
-
-                <p>
-                  {{ message }}
-                </p>
-=======
-              </div>
->>>>>>> 44c6b5b41bb142328193d6fb2a7108098f2c814b
             </div>
+
+            <!-- Email address field -->
+
             <div class="form-group mt-4">
               <label for="exampleInputEmail1">Email Address:</label>
               <input type="email" class="form-control rounded-5 mt-2" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@email.com" name="email">
-              
             </div>
+
+            <!-- Password field -->
+            
             <div class="form-group mt-4">
               <label for="exampleInputPassword1">Desired Password:</label>
               <input type="password" class="form-control rounded-5 mt-2" id="exampleInputPassword1" placeholder="password" name="password">
             </div>
 
+            <!-- Account type radio buttons field -->
+
             <div class="form-group mt-4">
               <label for="accountType">Account Type:</label>
+              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                
+                <input type="radio" class="btn-check" name="accountType" value="customer" id="btnradio1" autocomplete="off" checked>
+                <label class="btn btn-outline-dark rounded-5 mx-2" for="btnradio1">Customer</label>
+                
+                <input type="radio" class="btn-check" name="accountType" value="dealer" id="btnradio2" autocomplete="off">
+                <label class="btn btn-outline-dark rounded-5 mx-2" for="btnradio2">Dealer</label>
+
+              </div>
 
               <!-- <div class="form-check">
                 <input class="form-check-input mt-2" type="radio" name="accountType" value="customer" id="flexRadioDefault1" checked>
@@ -139,49 +122,12 @@
                   Dealer
                 </label>
               </div> -->
-
               
-                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-
-                  <input type="radio" class="btn-check" name="accountType" value="customer" id="btnradio1" autocomplete="off" checked>
-                  <label class="btn btn-outline-dark rounded-5 mx-2" for="btnradio1">Customer</label>
-
-                  <input type="radio" class="btn-check" name="accountType" value="dealer" id="btnradio2" autocomplete="off">
-                  <label class="btn btn-outline-dark rounded-5 mx-2" for="btnradio2">Dealer</label>
-
+              
+              <div class="row mt-3">
+                <div class="col-6">  
+                  <button class="btn btn-danger mt-3 rounded-0 text-nowrap">Create Account</button>       
                 </div>
-                
-          
-<<<<<<< HEAD
-        </main>
-    
-        <!-- FOOTER -->
-    
-        <footer class="footer fixed-bottom mt-auto mb-0 py-3 bg-light">
-          <div class="container-fluid text-center">
-            <span class="text-muted">Created with Bootstrap v5.2.0</span>
-          </div>
-        </footer>
-    
-        <!-- JavaScript Bundle with Popper -->
-        <script
-          src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-          crossorigin="anonymous"
-        ></script>
-      </body>
-    </html>
-    
-=======
-            
-            <div class="row mt-2">
-
-              <div class="col-6">
-  
-                <button class="btn btn-danger mt-3 rounded-0 text-nowrap">Create Account</button>       
-  
-  
-              </div>
             </form>
               <div class="col-6 d-flex justify-content-end justify-text-end">
   
@@ -216,4 +162,3 @@
     ></script>
   </body>
 </html>
->>>>>>> 44c6b5b41bb142328193d6fb2a7108098f2c814b

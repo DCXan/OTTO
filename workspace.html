@@ -1,6 +1,6 @@
 <html lang="en">
   <head>
-    <link href="/public/css/style.css" rel="stylesheet">
+    <link href="/public/css/style.css" rel="stylesheet" />
     <!-- CSS only -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
@@ -14,18 +14,13 @@
     <title>OTTO</title>
   </head>
   <body>
-
     <!-- NAVBAR -->
-    
+
     <header>
       <nav class="navbar fixed-top navbar-expand-lg bg-light">
         <div class="container">
-          <a class="navbar-brand" href="#">
-            <img
-        src="/public/images/small_logo.png"
-        width="50"
-        alt="Otto Logo"
-      />
+          <a class="navbar-brand" href="/">
+            <img src="/public/images/small_logo.png" width="50" alt="Otto Logo" />
           </a>
           <button
             class="navbar-toggler"
@@ -57,74 +52,72 @@
         </div>
       </nav>
     </header>
-    <main class="container mt-4 py-5">
-      <div class="container g-0" >
 
-        <!-- MAIN BANNER -->
-
-        <div class="row px-0 mx-0 mt-4 mb-md-4 mb-sm-0">
-          <div class="col-md-5 g-0 mb-0">
-              <img src="/public/images/logo.png" alt="" class="img-fluid d-none d-md-block" />
-              <img src="/public/images/logo_thin.png" alt="" class="img-fluid d-md-none" />
+    <!-- MAIN SECTION -->
+    
+    <main class="container mt-4 py-5 d-flex justify-content-center">
+      
+      <div class="col-8 ">
+        <div class="row mt-5">
+          <img src="/public/images/logo_thin.png" alt="" class="img-fluid" />
+        </div>
+        <div class="row d-flex justify-content-center">
+          <form method="POST" action="/account/login">
+            <div class="form-group mt-5">
+              <label for="exampleInputEmail1">Email Address:</label>
+              <input type="email" class="form-control rounded-0" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@email.com" name="email">
+              
             </div>
+            <div class="form-group mt-3">
+              <label for="exampleInputPassword1">Password:</label>
+              <input type="password" class="form-control rounded-0 mt-2" id="exampleInputPassword1" placeholder="password" name="password">
+            </div>
+            
+            <div class="row">
 
-            <div class="col-md-7 g-0 mb-0">
-              <!-- <img src="/public/images/nissan_gtr.jpg" alt="" class="img-fluid" style="height: 100%; object-fit: cover;" /> -->
-              <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" style="height: 100%; object-fit: cover;" src="/public/images/audi_rs3.jpeg" alt="First slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" style="height: 100%; object-fit: cover;" src="/public/images/nissan_gtr.jpg" alt="Second slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" style="height: 100%; object-fit: cover;"src="/public/images/ford_bronco.jpg" alt="Third slide">
-                  </div>
-                </div>
+              <div class="col-6">
+  
+                <button class="btn btn-danger mt-3 rounded-0 text-nowrap">Log In</button>       
+  
+  
               </div>
+              <div class="col-6 d-flex justify-content-end justify-text-center">
+  
+                <form method="GET" action="/account/register">
+                  <small id="register-msg" class="text-nowrap">Don't have an account?</small>
+                  <button class="btn btn-danger mt-3 rounded-0 text-nowrap">Register</button>
+                </form>
+  
+  
+              </div>
+
             </div>
+            
+            
+            
+            
+            <p>
+              {{ message }}
+            </p>
+          </form>
         </div>
+      </div>
+      
+    </main>
 
-        <!-- LOG IN BANNER -->
+    <!-- FOOTER -->
 
-        <div class="container bg-dark "> 
-        <div class="row mb-sm-0">
+    <footer class="footer fixed-bottom mt-auto mb-0 py-3 bg-light">
+      <div class="container-fluid text-center">
+        <span class="text-muted">Created with Bootstrap v5.2.0</span>
+      </div>
+    </footer>
 
-          <div class="row pt-4 pb-0">
-            <div class="d-flex justify-content-center">
-              <h3 id="tagline" class="text-light fw-lighter text-center">
-                Sit back, relax, and let OTTO find your next car.
-              </h3>
-            </div>
-          </div>
-        </div>
-
-        <div class="row mb-0 pb-2 pt-0">
-          <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-danger mt-4 mb-3 rounded-0">
-              LOG IN
-            </button>
-          </div>
-        </div>
-
-        </div>
-
-          </main>
-
-          <!-- FOOTER -->
-
-          <footer class="footer fixed-bottom mt-auto mb-0 py-3 bg-light">
-            <div class="container-fluid text-center">
-              <span class="text-muted">Created with Bootstrap v5.2.0</span>
-            </div>
-          </footer>
-          
-          <!-- JavaScript Bundle with Popper -->
-          <script
-          src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-          crossorigin="anonymous"
-          ></script>
-        </body>
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

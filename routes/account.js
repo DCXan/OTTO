@@ -8,12 +8,7 @@ const bcrypt = require("bcryptjs")
 // Display log in and register pages
 
 accountRouter.get("/login", (req, res) => {
-  let isRegistered = req.query.success
-  if (isRegistered) {
-    res.render("login", { message: "Account created successfully." })
-  } else {
-    res.render("login")
-  }
+  res.render("login")
 })
 
 accountRouter.get("/register", (req, res) => {
@@ -23,59 +18,75 @@ accountRouter.get("/register", (req, res) => {
 // Allow user to register by submitting a desired username and password
 
 accountRouter.post("/register", async (req, res) => {
-  const username = req.body.username
+  const firstName = req.body.firstName
+  const lastName = req.body.lastName
+  const email = req.body.email
   const password = req.body.password
-  const customer_dealer = req.body.customer_dealership
 
-  // Check database to see if username already exists. If username exists return user to registration page and display error message
-
-  // CHECK ON HOW TO IMPLEMENT WITH FIND OR CREATE
-  // const [user, created] = await models.User.findOrCreate({
-  //   where: {username: username},
-  //   defaults: {password: password}
-  // })
-
-  const user = await models.User.findOne({
-    where: { username: username },
-  })
-
-  if (user != null) {
+  if (
+    email.length == 0 ||
+    password.length == 0 ||
+    firstName.length == 0 ||
+    lastName.length == 0
+  ) {
     res.render("register", {
-      message: "Username is taken. Please choose a different one.",
+      message: "Please fill out all fields to create an account.",
     })
   } else {
-    bcrypt.genSalt(10).then(salt => {
-      bcrypt.hash(password, salt).then(hash => {
-        const user = models.User.build({
-          username: username,
-          password: hash,
-          customer: customer_dealer,
-        })
-        user.save().then(savedUser => {
-          res.render("login", { message: "Account registration successful!" })
+    // Check database to see if username already exists. If username exists return user to registration page and display error message
+
+    // CHECK ON HOW TO IMPLEMENT WITH FIND OR CREATE
+    // const [user, created] = await models.User.findOrCreate({
+    //   where: {username: username},
+    //   defaults: {password: password}
+    // })
+
+    const account = await models.User.findOne({
+      where: { email: email },
+    })
+
+    if (account != null) {
+      res.render("register", {
+        message: `The email address ${email} is already associated with an account.`,
+      })
+    } else {
+      bcrypt.genSalt(10).then(salt => {
+        bcrypt.hash(password, salt).then(hash => {
+          const newAccount = models.User.build({
+            email: email,
+            password: hash,
+          })
+          newAccount.save().then(savedAccount => {
+            res.render("login", {
+              message: "Account registration successful!",
+            })
+          })
         })
       })
-    })
+    }
   }
 })
 
 // Allow user to log in with valid credentials in users DB.
 
 accountRouter.post("/login", async (req, res) => {
-  const username = req.body.username
+  const email = req.body.email
   const password = req.body.password
 
   // Search users DB for an existing username/pw combo. If combo doesn't exist, return to login and display message.
 
-  if (username.length == 0 || password.length == 0) {
-    return
+  if (email.length == 0 || password.length == 0) {
+    res.render("login", {
+      message:
+        "Please enter a valid email address AND password in order to log in.",
+    })
   } else {
     const user = await models.User.findOne({
-      where: { username: username },
+      where: { email: email },
     })
 
     if (user == null) {
-      res.render("login", { message: "Invalid username and/or password." })
+      res.render("login", { message: "Invalid email and/or password." })
     } else {
       bcrypt
         .compare(password, user.password)
@@ -83,26 +94,26 @@ accountRouter.post("/login", async (req, res) => {
           if (passwordsEqual && user.customer == true) {
             if (req.session) {
               req.session.buyerID = user.id
-              req.session.buyerUsername = user.username
+              req.session.buyerUsername = user.email
               req.session.buyerTrue = user.customer
             }
             res.redirect("/buyer/home")
           } else if (passwordsEqual && user.customer == false) {
             if (req.session) {
               req.session.dealerID = user.id
-              req.session.dealerUsername = user.id
+              req.session.dealerUsername = user.email
               req.session.dealerFalse = user.customer
             }
             res.redirect("/dealer/home")
           } else {
             res.render("login", {
-              errorMessage: "Invalid username and/or password.",
+              errorMessage: "Invalid email and/or password.",
             })
           }
         })
         .catch(error => {
           res.render("login", {
-            errorMessage: "Invalid username and/or password.",
+            errorMessage: "Invalid email and/or password.",
           })
         })
     }

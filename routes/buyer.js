@@ -11,9 +11,6 @@ buyerRouter.post("/home", (req, res) => {})
 
 module.exports = buyerRouter
 
-buyerRouter.get("/create", (req, res) => {
-  res.render("create")
+buyerRouter.get("/request", (req, res) => {
+  res.render("request")
 })
-// buyerRouter.post("create",(req,res)=>{
-
-// })

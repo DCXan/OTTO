@@ -64,7 +64,26 @@
             <div class="row d-flex justify-content-center">
               <h3 class="mt-4 d-flex justify-content-center">Account Registration</h3>
               <form method="POST" action="/account/register">
-                <div class="form-group mt-4">
+
+                <div class="row">
+                  <div class="col-6">
+                    
+                    <div class="form-group mt-4">
+                      <label for="firstName">First Name:</label>
+                      <input type="text" class="form-control rounded-0 mt-2" id="firstName" placeholder="First name" name="firstName">
+                    </div>
+
+                  </div>
+                  <div class="col-6">
+                    
+                    <div class="form-group mt-4">
+                      <label for="lastName">Last Name:</label>
+                      <input type="text" class="form-control rounded-0 mt-2" id="lastName" placeholder="Last name" name="lastName">
+                    </div>
+                    
+                  </div>
+                </div>
+                <div class="form-group mt-3">
                   <label for="exampleInputEmail1">Email Address:</label>
                   <input type="email" class="form-control rounded-0 mt-2" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@email.com" name="email">
                   

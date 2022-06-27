@@ -8,7 +8,7 @@ const bcrypt = require("bcryptjs");
 // Display log in and register pages
 
 accountRouter.get("/login", (req, res) => {
-    res.render("login");
+  res.render("login");
 });
 
 accountRouter.get("/register", (req, res) => {
@@ -18,43 +18,52 @@ accountRouter.get("/register", (req, res) => {
 // Allow user to register by submitting a desired username and password
 
 accountRouter.post("/register", async (req, res) => {
-  
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
   const email = req.body.email;
   const password = req.body.password;
 
-  if (email.length == 0 || password.length == 0) {
-    return;
-  }
-
-
-  // Check database to see if username already exists. If username exists return user to registration page and display error message
-
-  // CHECK ON HOW TO IMPLEMENT WITH FIND OR CREATE
-  // const [user, created] = await models.User.findOrCreate({
-  //   where: {username: username},
-  //   defaults: {password: password}
-  // })
-
-  const account = await models.User.findOne({
-    where: { email: email },
-  });
-
-  if (account != null) {
+  if (
+    email.length == 0 ||
+    password.length == 0 ||
+    firstName.length == 0 ||
+    lastName.length == 0
+  ) {
     res.render("register", {
-      message: `The email address ${email} is already associated with an account.`,
+      message: "Please fill out all fields to create an account.",
     });
   } else {
-    bcrypt.genSalt(10).then((salt) => {
-      bcrypt.hash(password, salt).then((hash) => {
-        const newAccount = models.User.build({
-          email: email,
-          password: hash,
-        });
-        newAccount.save().then((savedAccount) => {
-          res.render("login", { message: "Account registration successful!" });
+    // Check database to see if username already exists. If username exists return user to registration page and display error message
+
+    // CHECK ON HOW TO IMPLEMENT WITH FIND OR CREATE
+    // const [user, created] = await models.User.findOrCreate({
+    //   where: {username: username},
+    //   defaults: {password: password}
+    // })
+
+    const account = await models.User.findOne({
+      where: { email: email },
+    });
+
+    if (account != null) {
+      res.render("register", {
+        message: `The email address ${email} is already associated with an account.`,
+      });
+    } else {
+      bcrypt.genSalt(10).then((salt) => {
+        bcrypt.hash(password, salt).then((hash) => {
+          const newAccount = models.User.build({
+            email: email,
+            password: hash,
+          });
+          newAccount.save().then((savedAccount) => {
+            res.render("login", {
+              message: "Account registration successful!",
+            });
+          });
         });
       });
-    });
+    }
   }
 });
 
@@ -67,7 +76,7 @@ accountRouter.post("/login", async (req, res) => {
   // Search users DB for an existing username/pw combo. If combo doesn't exist, return to login and display message.
 
   if (email.length == 0 || password.length == 0) {
-    return;
+    res.render('login', {message: 'Please enter a valid email address AND password in order to log in.'});
   } else {
     const user = await models.User.findOne({
       where: { email: email },

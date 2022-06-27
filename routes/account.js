@@ -116,13 +116,13 @@ accountRouter.post("/login", async (req, res) => {
             res.redirect("/dealer/dashboard")
           } else {
             res.render("login", {
-              errorMessage: "Invalid email and/or password.",
+              message: "Invalid email and/or password.",
             })
           }
         })
         .catch(error => {
           res.render("login", {
-            errorMessage: "Invalid email and/or password.",
+            message: "Invalid email and/or password.",
           })
         })
     }
@@ -133,7 +133,7 @@ accountRouter.post("/logout", (req, res) => {
   if (req.session) {
     req.session.destroy()
   }
-  res.render("login", { logoutMessage: "You have been logged out." })
+  res.render("login", { message: "You have been logged out." })
 })
 
 module.exports = accountRouter

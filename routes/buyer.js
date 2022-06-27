@@ -9,8 +9,9 @@ buyerRouter.get("/home", (req, res) => {
 
 buyerRouter.post("/home", (req, res) => {})
 
-module.exports = buyerRouter
 
 buyerRouter.get("/request", (req, res) => {
   res.render("request")
 })
+
+module.exports = buyerRouter

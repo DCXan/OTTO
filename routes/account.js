@@ -18,10 +18,14 @@ accountRouter.get("/register", (req, res) => {
 // Allow user to register by submitting a desired username and password
 
 accountRouter.post("/register", async (req, res) => {
+
+  console.log(req.body)
+
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const email = req.body.email;
   const password = req.body.password;
+  const accountType = req.body.accountType;
 
   if (
     email.length == 0 ||
@@ -55,6 +59,9 @@ accountRouter.post("/register", async (req, res) => {
           const newAccount = models.User.build({
             email: email,
             password: hash,
+            firstName: firstName,
+            lastName: lastName,
+            accountType: accountType
           });
           newAccount.save().then((savedAccount) => {
             res.render("login", {

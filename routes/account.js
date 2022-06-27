@@ -18,10 +18,21 @@ accountRouter.get("/register", (req, res) => {
 // Allow user to register by submitting a desired username and password
 
 accountRouter.post("/register", async (req, res) => {
+<<<<<<< HEAD
   const firstName = req.body.firstName
   const lastName = req.body.lastName
   const email = req.body.email
   const password = req.body.password
+=======
+
+  console.log(req.body)
+
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
+  const email = req.body.email;
+  const password = req.body.password;
+  const accountType = req.body.accountType;
+>>>>>>> 44c6b5b41bb142328193d6fb2a7108098f2c814b
 
   if (
     email.length == 0 ||
@@ -55,8 +66,16 @@ accountRouter.post("/register", async (req, res) => {
           const newAccount = models.User.build({
             email: email,
             password: hash,
+<<<<<<< HEAD
           })
           newAccount.save().then(savedAccount => {
+=======
+            firstName: firstName,
+            lastName: lastName,
+            accountType: accountType
+          });
+          newAccount.save().then((savedAccount) => {
+>>>>>>> 44c6b5b41bb142328193d6fb2a7108098f2c814b
             res.render("login", {
               message: "Account registration successful!",
             })

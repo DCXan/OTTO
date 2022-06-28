@@ -106,7 +106,53 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <p>Modal body text goes here.</p>
+
+                    <div class="row">
+                      <div class="col-6">
+                        <label for="modal-make" class="form-label">Make:</label>
+                        <select class="form" id="modal-make" name="make" required>
+                        <option disabled selected hidden>Select a Make</option>
+                        <option>Toyota</option>
+                        <option>Honda</option>
+                        <option>Ford</option>
+                        <option>Volkswagen</option>
+                        </select>
+                      </div>
+
+                      <div class="col-6">
+                        <label for="modal-model" class="form-label">Model:</label>
+                        <select class="form" id="modal-model" name="model" required>
+                        <option disabled selected hidden>Select a Model</option>
+                        <option>Camry</option>
+                        <option>Accord</option>
+                        <option>Explorer</option>
+                        <option>Jetta</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-6">
+                        <label for="modal-year" class="form-range">Year:</label>
+                        <input type="range" class="form-range" min="1980" max="2023" id="modal-year">
+
+                      </div>
+
+                      <div class="col-6">
+                        <label for="modal-model" class="form-label">Model:</label>
+                        <select class="form-control" id="modal-model" name="model" required>
+                        <option disabled selected hidden>Select a Model</option>
+                        <option>Camry</option>
+                        <option>Accord</option>
+                        <option>Explorer</option>
+                        <option>Jetta</option>
+                        </select>
+                      </div>
+                    </div>
+
+
+
+
                   </div>
                 </div>
               </div>

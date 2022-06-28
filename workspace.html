@@ -99,61 +99,85 @@
 
             <div class="modal fade" id="add-car-modal" tabindex="-1" aria-labelledby="add-car-modal-title" aria-hidden="true">
 
-              <div class="modal-dialog">
+              <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="add-car-modal-title">Add Car to Inventory</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
+
                   <div class="modal-body">
+                    <form method="POST" action="/dealer/add-car">
+                      <div class="row">
+                        <div class="col-6">
+                          <label for="modal-make" class="form-label">Make:</label>
+                          <select class="form-control" id="modal-make" name="make" required>
+                          <option disabled selected hidden>Select Make</option>
+                          <option>Toyota</option>
+                          <option>Honda</option>
+                          <option>Ford</option>
+                          <option>Volkswagen</option>
+                          </select>
+                        </div>
 
-                    <div class="row">
-                      <div class="col-6">
-                        <label for="modal-make" class="form-label">Make:</label>
-                        <select class="form" id="modal-make" name="make" required>
-                        <option disabled selected hidden>Select a Make</option>
-                        <option>Toyota</option>
-                        <option>Honda</option>
-                        <option>Ford</option>
-                        <option>Volkswagen</option>
-                        </select>
+                        <div class="col-6">
+                          <label for="modal-model" class="form-label">Model:</label>
+                          <select class="form-control" id="modal-model" name="model" required>
+                          <option disabled selected hidden>Select Model</option>
+                          <option>Camry</option>
+                          <option>Accord</option>
+                          <option>Explorer</option>
+                          <option>Jetta</option>
+                          </select>
+                        </div>
                       </div>
 
-                      <div class="col-6">
-                        <label for="modal-model" class="form-label">Model:</label>
-                        <select class="form" id="modal-model" name="model" required>
-                        <option disabled selected hidden>Select a Model</option>
-                        <option>Camry</option>
-                        <option>Accord</option>
-                        <option>Explorer</option>
-                        <option>Jetta</option>
-                        </select>
+                      <div class="row mt-4">
+
+                        <div class="col-6">
+                          <label for="modal-year" class="form-label">Year:</label>
+                            <div class= "form-control" id="modal-year" name="year" required>
+                              <input type="number" min="1980" max="2023" step="1" value="2022" name="year"/>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                          <label for="modal-color" class="form-label">Color:</label>
+                          <select class="form-control" id="modal-color" name="color" required>
+                          <option disabled selected hidden>Select Color</option>
+                          <option>White</option>
+                          <option>Black</option>
+                          <option>Gray</option>
+                          <option>Red</option>
+                          <option>Blue</option>
+                          <option>Silver</option>
+                          </select>
+                        </div>
+
                       </div>
-                    </div>
 
-                    <div class="row">
-                      <div class="col-6">
-                        <label for="modal-year" class="form-range">Year:</label>
-                        <input type="range" class="form-range" min="1980" max="2023" id="modal-year">
+                      <div class="row justify-content-center text-center mt-4">
+                        <div class="col-10 mb-3">
+                          
+                            <label for="modal-mileage" class="form-label">Mileage: </label>
+                            <output id ="result">50000</output>
+                            <input type="range" class="form-range" min="0" max="250000" id="send" oninput= "result.value = send.value" name="mileage" value="50000">  
 
                       </div>
+                      <div class="row justify-content-center">
+                        <div class="col-4 mt-3">
 
-                      <div class="col-6">
-                        <label for="modal-model" class="form-label">Model:</label>
-                        <select class="form-control" id="modal-model" name="model" required>
-                        <option disabled selected hidden>Select a Model</option>
-                        <option>Camry</option>
-                        <option>Accord</option>
-                        <option>Explorer</option>
-                        <option>Jetta</option>
-                        </select>
+                          <button class="btn btn-danger rounded-5">Add Car</button>
+                        </div>
+
                       </div>
-                    </div>
-
-
-
-
+                    </form>
                   </div>
+
+
+
+
+                  
                 </div>
               </div>
 

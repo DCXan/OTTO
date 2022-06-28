@@ -16,3 +16,7 @@ body {
 .nav-link {
   color: black !important;
 }
+
+#modal-year {
+  padding: 3;
+}

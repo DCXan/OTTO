@@ -10,8 +10,28 @@ dealerRouter.get("/dashboard", async (req, res) => {
   res.render("dealer-dashboard")
 })
 
-dealerRouter.get('/add-car', (req, res) => {
-  res.render('add-car')
+dealerRouter.post('/add-car', (req, res) => {
+  
+  console.log(req.body)
+
+  const dealerID = req.session.dealerID
+  const make = req.body.make
+  const model = req.body.model
+  const year = req.body.year
+  const color = req.body.color
+  const mileage = req.body.mileage
+
+  const newCar = models.Inventory.build({
+    make: make,
+    model: model,
+    year: year,
+    color: color,
+    mileage: mileage,
+    dealerID: dealerID
+  })
+  newCar.save().then((savedCar) =>{
+    res.redirect('/dealer/dashboard')
+  })
 })
 
 module.exports = dealerRouter

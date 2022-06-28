@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "gfadeksh",
-    "password": "yl3-68-adjzkYS9FMQbf7TaTrkYdTFFQ",
-    "database": "gfadeksh",
-    "host": "heffalump.db.elephantsql.com",
+    "username": "akxyfegu",
+    "password": "q9mGSZ8oQRphDir9dzWqNgT6sIBM8y4R",
+    "database": "akxyfegu",
+    "host": "jelani.db.elephantsql.com",
     "dialect": "postgres"
   },
   "test": {

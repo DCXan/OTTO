@@ -7,3 +7,16 @@
 body {
   background-color: rgb(225, 225, 225) !important;
 }
+
+.dropdown-item:active {
+  background-color: red !important;
+  }
+
+
+.nav-link {
+  color: black !important;
+}
+
+#modal-year {
+  padding: 3;
+}

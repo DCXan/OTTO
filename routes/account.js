@@ -136,4 +136,11 @@ accountRouter.post("/logout", (req, res) => {
   res.render("login", { message: "You have been logged out." })
 })
 
+accountRouter.get('/logout', (req, res) => {
+  if (req.session) {
+    req.session.destroy()
+  }
+  res.render("login", { message: "You have been logged out." })
+})
+
 module.exports = accountRouter

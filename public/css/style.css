@@ -7,3 +7,7 @@
 body {
   background-color: rgb(225, 225, 225) !important;
 }
+
+.dropdown-item:active {
+  background-color: red !important;
+  }

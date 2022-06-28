@@ -1,0 +1,86 @@
+<html lang="en">
+  <head>
+    <link href="/css/style.css" rel="stylesheet" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTTO</title>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+
+    <header>
+      <nav class="navbar fixed-top navbar-expand-lg bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="/images/small_logo.png" width="50" alt="Otto Logo" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/dealer/dashboard">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">List a Car</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Profile</a>
+              </li>
+              <li class="form-inline my-2 my-lg-0">
+                <form method="POST" action="/account/logout">
+                  <button class="btn btn-secondary rounded-5 text-nowrap">Log Out</button>
+                  <!-- <a class="nav-link" href="#">Log Out</a> -->
+                </form>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- MAIN SECTION -->
+    <main class="container mt-4 py-5 d-flex justify-content-center">
+    
+        <div class="row">
+          <h1>Dealer Dashboard</h1>
+
+        </div>
+
+    
+      
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer class="footer fixed-bottom mt-auto mb-0 py-3 bg-light">
+      <div class="container-fluid text-center">
+        <span class="text-muted">Created with Bootstrap v5.2.0</span>
+      </div>
+    </footer>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

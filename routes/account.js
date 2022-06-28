@@ -98,29 +98,31 @@ accountRouter.post("/login", async (req, res) => {
       bcrypt
         .compare(password, user.password)
         .then(passwordsEqual => {
-          if (passwordsEqual && user.customer == true) {
+          if (passwordsEqual && user.accountType == 'customer') {
             if (req.session) {
               req.session.buyerID = user.id
               req.session.buyerUsername = user.email
-              req.session.buyerTrue = user.customer
+              req.session.buyerFirstName = user.firstName
+              req.session.buyerLastName = user.lastName
             }
             res.redirect("/buyer/home")
-          } else if (passwordsEqual && user.customer == false) {
+          } else if (passwordsEqual && user.accountType == 'dealer') {
             if (req.session) {
               req.session.dealerID = user.id
               req.session.dealerUsername = user.email
-              req.session.dealerFalse = user.customer
+              req.session.dealerFirstName = user.firstName
+              req.session.dealerLastName = user.lastName
             }
-            res.redirect("/dealer/home")
+            res.redirect("/dealer/dashboard")
           } else {
             res.render("login", {
-              errorMessage: "Invalid email and/or password.",
+              message: "Invalid email and/or password.",
             })
           }
         })
         .catch(error => {
           res.render("login", {
-            errorMessage: "Invalid email and/or password.",
+            message: "Invalid email and/or password.",
           })
         })
     }
@@ -131,7 +133,7 @@ accountRouter.post("/logout", (req, res) => {
   if (req.session) {
     req.session.destroy()
   }
-  res.render("login", { logoutMessage: "You have been logged out." })
+  res.render("login", { message: "You have been logged out." })
 })
 
 module.exports = accountRouter

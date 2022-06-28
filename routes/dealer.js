@@ -3,8 +3,8 @@
 const express = require("express")
 const dealerRouter = express.Router()
 
-dealerRouter.get("/home", (req, res) => {
-  res.render("buyer")
+dealerRouter.get("/dashboard", (req, res) => {
+  res.render("dealer-dashboard")
 })
 
 module.exports = dealerRouter

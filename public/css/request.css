@@ -1,6 +1,9 @@
 body {
-  background-color: rgb(225, 225, 225) !important;
+  /* background-color: rgb(225, 225, 225) !important; */
   display: flex;
   align-items: center;
   justify-content: center;
+}
+input[type="range"] {
+  width: 400px;
 }

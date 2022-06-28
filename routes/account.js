@@ -18,14 +18,13 @@ accountRouter.get("/register", (req, res) => {
 // Allow user to register by submitting a desired username and password
 
 accountRouter.post("/register", async (req, res) => {
-
   console.log(req.body)
 
-  const firstName = req.body.firstName;
-  const lastName = req.body.lastName;
-  const email = req.body.email;
-  const password = req.body.password;
-  const accountType = req.body.accountType;
+  const firstName = req.body.firstName
+  const lastName = req.body.lastName
+  const email = req.body.email
+  const password = req.body.password
+  const accountType = req.body.accountType
 
   if (
     email.length == 0 ||
@@ -61,9 +60,9 @@ accountRouter.post("/register", async (req, res) => {
             password: hash,
             firstName: firstName,
             lastName: lastName,
-            accountType: accountType
-          });
-          newAccount.save().then((savedAccount) => {
+            accountType: accountType,
+          })
+          newAccount.save().then(savedAccount => {
             res.render("login", {
               message: "Account registration successful!",
             })
@@ -98,15 +97,15 @@ accountRouter.post("/login", async (req, res) => {
       bcrypt
         .compare(password, user.password)
         .then(passwordsEqual => {
-          if (passwordsEqual && user.accountType == 'customer') {
+          if (passwordsEqual && user.accountType == "customer") {
             if (req.session) {
-              req.session.buyerID = user.id
+              req.session.customerID = user.id
               req.session.buyerUsername = user.email
               req.session.buyerFirstName = user.firstName
               req.session.buyerLastName = user.lastName
             }
-            res.redirect("/buyer/home")
-          } else if (passwordsEqual && user.accountType == 'dealer') {
+            res.redirect("/customer/dashboard")
+          } else if (passwordsEqual && user.accountType == "dealer") {
             if (req.session) {
               req.session.dealerID = user.id
               req.session.dealerUsername = user.email

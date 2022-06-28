@@ -67,7 +67,7 @@
 
                 <div class="row">
                   <div class="col-6">
-                    
+                    <form method="POST" btn btn-danger mt-4 mb-3 rounded-5" action="/customer/request">
                     <div class="form-group mt-4 pb-4 justify-content-center">
                       <label > Make</label>
                       <select name="make" required>
@@ -97,7 +97,7 @@
                 <div class="col-6">
                     <div class= "form-group mt-5 justify-content-center align-text-bottom">
                         <label>Year:</label>
-                      <input type="number" min="1900" max="2023" step="1" value="2016" />
+                      <input type="number" min="1900" max="2023" step="1" value="2016" name="year"/>
                       </div>
                       
                     </div>
@@ -120,46 +120,42 @@
 
                       </div>
                 </div>
-                 <div class="form-group mt-5">
+                <div class="row">
 
-                     <div class="range">
-                            
-                            <input type="range" class="form-range" value="10000" id="send" min="$1" max="200000" oninput="result.value = send.value" name="price"/>
+
+                     {{! <div class="range"> }}
+                            <div class="form-group mt-5">
+                            <input type="range" class="form-range" value="10000" id="send" min="$1" max="100000" oninput="result.value = send.value" name="price"/>
                            <h5>Max Price:</h5>   
                            $<output id ="result">10000</output>
+                           <div>
                             
                            
                             
-                            <h5>Max Mileage</h5> 
-
-                            <input type="range" class="form-range" value="10000" id="send2" min="1" max="200000" oninput="result2.value = send2.value" name="mileage"/>
+                           
+                          <div class="form-group mt-5">
+                            <input type="range" class="form-range" value="10000" id="send2" min="1" max="100000" oninput="result2.value = send2.value" name="mileage"/>
+                             <h5>Max Mileage</h5>
                             <output id= "result2">10000</output>
+                            </div>
                             
                             
                             
                     </div>
-                {{! <div class="form-group mt-3">
-                  <label for="exampleInputEmail1">Email Address:</label>
-                  <input type="email" class="form-control rounded-0 mt-2" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@email.com" name="email">
-                  
-                </div>
-                <div class="form-group mt-5">
-                  <label for="exampleInputPassword1">Desired Password:</label>
-                  <input type="password" class="form-control rounded-0 mt-2" id="exampleInputPassword1" placeholder="password" name="password">
-                </div>
-                 }}
-                
+                    </div>
+               
 
     
                   <div class="col-6 justify-content-center">
 
                    
-                    <input type="reset" class="btn btn-danger mt-3 rounded-0 text-nowrap" value="Reset">     
-                     <form method="POST" btn btn-danger mt-4 mb-3 rounded-5" action="/buyer/request">
-                    <button class="btn btn-danger mt-4 mb-3 rounded-5">Submit a Request</button>
+                    <input type="reset" class="btn btn-danger mt-4 mb-3 rounded-5" value="Reset">     
+                     
+                    <button class="btn btn-danger mt-4 mb-3 rounded-5">Submit Request</button>
                     </form>
       
                   </div>
+                  {{message}}
                  
           </div>
         

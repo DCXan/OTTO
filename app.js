@@ -22,8 +22,8 @@ app.use(
 const accountRouter = require("./routes/account")
 app.use("/account", accountRouter)
 
-const buyerRouter = require("./routes/buyer")
-app.use("/buyer", buyerRouter) // authenticationMW IMPLEMENT WHEN LOG IN FEATURE IS READY
+const customerRouter = require("./routes/customer")
+app.use("/customer", customerRouter) // authenticationMW IMPLEMENT WHEN LOG IN FEATURE IS READY
 
 const dealerRouter = require("./routes/dealer")
 app.use("/dealer", dealerRouter) // authenticationMW IMPLEMENT WHEN LOG IN FEATURE IS READY

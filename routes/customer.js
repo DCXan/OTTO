@@ -13,7 +13,8 @@ customerRouter.get("/dashboard", async (req, res) => {
 customerRouter.post("/dashboard", async (req, res) => {
   const make = req.body.make
   const model = req.body.model
-  const year = req.body.year
+  const minYear = req.body.minYear
+  const maxYear = req.body.maxYear
   const color = req.body.color
   const price = req.body.price
   const mileage = req.body.mileage
@@ -23,7 +24,8 @@ customerRouter.post("/dashboard", async (req, res) => {
   const newRequest = await models.carRequest.build({
     make: make,
     model: model,
-    year: year,
+    minYear: minYear,
+    maxYear: maxYear,
     color: color,
     maxPrice: price,
     maxMileage: mileage,
@@ -41,4 +43,8 @@ customerRouter.post("/delete-request", async (req, res) => {
   })
   res.redirect("/customer/dashboard")
 })
+
+// customerRouter.post("/myOffers", async (req,res)=>{
+//   const
+// }
 module.exports = customerRouter

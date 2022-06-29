@@ -71,9 +71,7 @@
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="inventory-tab" data-bs-toggle="tab" data-bs-target="#inventory-tab-pane" type="button" role="tab" aria-controls="inventory-tab-pane" aria-selected="true">Request</button>
           </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="requests-tab" data-bs-toggle="tab" data-bs-target="#requests-tab-pane" type="button" role="tab" aria-controls="requests-tab-pane" aria-selected="false">Customer Requests</button>
-          </li>
+ 
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="offers-tab" data-bs-toggle="tab" data-bs-target="#offers-tab-pane" type="button" role="tab" aria-controls="offers-tab-pane" aria-selected="false">My Offers</button>
           </li>
@@ -107,9 +105,9 @@
                                <form method="POST" action="/customer/delete-request">
                           
                          
-                              <h5 class="card-title">{{id}}</h5>
+                              
                               <h5 class="card-title">{{make}} {{model}}</h5>
-                              <h6 class="card-subtitle mb-2 text-muted">{{year}}</h6>
+                              <h6 class="card-subtitle mb-2 text-muted">{{minYear}} - {{maxYear}}</h6>
                               <p class="card-text">color : {{color}}</p>
                               <p class="card-text">Max Mileage:{{maxMileage}}</p>
                               <p class="card-text">Max Price:{{maxPrice}}</p>
@@ -177,8 +175,10 @@
                         <div class="col-6">
                           <label for="modal-year" class="form-label">Year:</label>
                             <div class= "form-control" id="modal-year" name="year" required>
-                              <input type="number" min="1980" max="2023" step="1" value="2022" name="year"/>
+                              <input type="number" min="1980" max="2023" step="1" value="2000" name="minYear"/>
+                              <input type="number" min="1980" max="2023" step="1" value="2022" name="maxYear"/>                                 
                             </div>
+
                         </div>
 
                         <div class="col-6">
@@ -227,16 +227,95 @@
         
         </div>
 
-        <!-- REQUEST TAB -->
-
-        <div class="tab-pane fade" id="requests-tab-pane" role="tabpanel" aria-labelledby="requests-tab-pane">REQUEST TABLE</div>
-
-        <!-- OFFER TAB -->
-
-        <div class="tab-pane fade" id="offers-tab-pane" role="tabpanel" aria-labelledby="offers-tab-pane">OFFER TABLE</div>
+       
 
 
       </div>
+       <!-- OFFER TAB -->
+
+        <div class="tab-pane fade" id="offers-tab-pane" role="tabpanel" aria-labelledby="offers-tab-pane">
+        
+          <div class="container text-center mt-5">
+                      <div class="row justify-content-center "> 
+                      {{#request}}
+                        <div class="card mt-3 " style="width: 18rem; height:auto;">  
+                       
+                        
+                              <div class="card-body">
+                              
+                          
+                         
+                              
+                              <h5 class="card-title">{{make}} {{model}}</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">{{year}}</h6>
+                              <p class="card-text">color : {{color}}</p>
+                              <p class="card-text">Mileage: {{mileage}}</p>
+                              <p class="card-text">Offered Price: <b>${{maxPrice}}</b></p>
+
+                              
+                              <input type="hidden" value="{{id}}" name="declineID">
+                              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#acceptModal">
+                                Accept
+                              </button>
+
+                              <!-- Modal -->
+                              <div class="modal fade" id="acceptModal" tabindex="-1" aria-labelledby="acceptModalLabel" aria-hidden="true">
+                                <div class="modal-dialog ">
+                                  <div class="modal-content ">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title  " id="acceptModalLabel">Accept Offer?</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <!-- Accept Offer-->
+                                    
+                                      <form class="d-inline-block" method="POST" action="/customer/myOffers">
+                                          <button class="btn btn-success">Yes</button>
+                                        </form>
+                                    
+
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                    </div>
+                                    
+                                  </div>
+                                </div>
+                              </div>
+                              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#declineModal">
+                                    Decline
+                                  </button>
+
+                                  <!-- Modal -->
+                                  <div class="modal fade" id="declineModal" tabindex="-1" aria-labelledby="declineModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="declineModalLabel">Decline Offer?</h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                         <!-- Decline Offer-->
+                                        <form class="d-inline-block" action="/customer/decline">
+                                          <button class="btn btn-danger">Yes</button>
+                                        </form>
+                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                        </div>
+                                    
+                                      </div>
+                                    </div>
+                                  </div>
+                          
+                               </form>
+                                    
+                              </div>   
+                           
+                        </div>
+                        {{/request}}    
+                        </div> 
+                    </div>
+        
+        </div>
+
+
     </main>
 
     <!-- FOOTER -->

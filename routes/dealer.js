@@ -66,5 +66,13 @@ dealerRouter.post('/delete-car', async (req, res) => {
 
 })
 
+dealerRouter.get('/create-offer/:offerID', async (req, res) => {
+
+  const id = req.params.offerID
+
+  // const request = await models.carRequest.findbyPk(id)
+
+  res.render('offer') // add {{request}}
+})
 
 module.exports = dealerRouter

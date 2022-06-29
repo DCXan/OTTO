@@ -1,6 +1,6 @@
 <html lang="en">
   <head>
-    <link href="/public/css/style.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
     <!-- CSS only -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
@@ -20,7 +20,7 @@
       <nav class="navbar fixed-top navbar-expand-lg bg-light">
         <div class="container">
           <a class="navbar-brand" href="#">
-            <img src="/public/images/small_logo.png" width="50" alt="Otto Logo" />
+            <img src="/images/small_logo.png" width="50" alt="Otto Logo" />
           </a>
           <button
             class="navbar-toggler"
@@ -239,7 +239,8 @@
                   <th scope="col">Customer ID</th>
                   <th scope="col">Make</th>
                   <th scope="col">Model</th>
-                  <th scope="col">Year</th>
+                  <th scope="col">Min Year</th>
+                  <th scope="col">Max Year</th>
                   <th scope="col">Color</th>
                   <th scope="col">Max Mileage</th>
                   <th scope="col">Requested On</th>
@@ -253,18 +254,108 @@
                   <th class="align-middle" scope="row">{{customerID}}</th>
                   <td class="align-middle">{{make}}</td>
                   <td class="align-middle">{{model}}</td>
-                  <td class="align-middle">{{year}}</td>
+                  <td class="align-middle">{{minYear}}</td>
+                  <td class="align-middle">{{maxYear}}</td>
                   <td class="align-middle">{{color}}</td>
                   <td class="align-middle">{{maxMileage}}</td>
                   <td class="align-middle">{{createdAt}}</td>
                   <td class="align-middle">
-                    <button class="btn-sm rounded-3">Send an Offer</button>
+                    <button type="button" class="btn-sm rounded-3" data-bs-toggle="modal" data-bs-target="#create-offer-modal">Send an Offer</button>
                   </td>
                   </form>
                 </tr>
-                {{/requests}}
+                <!-- {{/requests}} -->
               </tbody>
             </table>
+          </div>
+
+          <div class="modal fade" id="create-offer-modal" tabindex="-1" aria-labelledby="create-offer-modal-title" aria-hidden="true">
+
+            <!-- MODAL POPUP -->
+        
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="add-car-modal-title">Send an Offer</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  
+                </div>
+        
+                <div class="modal-body">
+                  <p>Customer requests a {{minYear}} - {{maxYear}} {{color}} {{make}} {{model}} with no more than {{maxMileage}} miles,</p>
+
+                  {{/requests}}
+                  <!-- Create Offer FORM -->
+                  <form method="POST" action="/dealer/send-offer">
+                    <div class="row">
+                      <div class="col-6">
+                        <label for="modal-make" class="form-label ">Make:</label>
+                        <select class="form-control" id="modal-make" name="make" required>
+                        <option disabled selected hidden>Select Make</option>
+                        <option>Toyota</option>
+                        <option>Honda</option>
+                        <option>Ford</option>
+                        <option>Volkswagen</option>
+                        </select>
+                      </div>
+        
+                      <div class="col-6">
+                        <label for="modal-model" class="form-label">Model:</label>
+                        <select class="form-control" id="modal-model" name="model" required>
+                        <option disabled selected hidden>Select Model</option>
+                        <option>Camry</option>
+                        <option>Accord</option>
+                        <option>Explorer</option>
+                        <option>Jetta</option>
+                        </select>
+                      </div>
+                    </div>
+        
+                    <div class="row mt-4">
+        
+                      <div class="col-6">
+                        <label for="modal-year" class="form-label">Year:</label>
+                          <div class= "form-control" id="modal-year" name="year" required>
+                            <input type="number" min="1980" max="2023" step="1" value="2022" name="year"/>
+                          </div>
+                      </div>
+        
+                      <div class="col-6">
+                        <label for="modal-color" class="form-label">Color:</label>
+                        <select class="form-control" id="modal-color" name="color" required>
+                        <option disabled selected hidden>Select Color</option>
+                        <option>White</option>
+                        <option>Black</option>
+                        <option>Gray</option>
+                        <option>Red</option>
+                        <option>Blue</option>
+                        <option>Silver</option>
+                        </select>
+                      </div>
+        
+                    </div>
+        
+                    <div class="row justify-content-center text-center mt-4">
+                      <div class="col-10 mb-3">
+                        
+                          <label for="modal-mileage" class="form-label">Mileage: </label>
+                          <output id ="result">50000</output>
+                          <input type="range" class="form-range" min="0" max="250000" id="send" oninput= "result.value = send.value" name="mileage" value="50000">  
+        
+                    </div>
+                    <div class="row justify-content-center">
+                      <div class="col-4 mt-3">
+        
+                        <button class="btn btn-danger rounded-5">Submit Offer</button>
+                      </div>
+        
+                    </div>
+                  </form>
+                </div>
+        
+              </div>
+            </div>
+        
           </div>
 
         </div>

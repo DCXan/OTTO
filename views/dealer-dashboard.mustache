@@ -130,6 +130,9 @@
                       {{/cars}}
                     </tbody>
                   </table>
+                  <div class="text-center">
+                    {{^cars}} You have no cars in your inventory. {{/cars}}
+                  </div>
                 </div>
   
               </div>
@@ -249,7 +252,7 @@
               <tbody>
                 {{#requests}}
                 <tr>
-                  <form method="POST" action="/dealer/send-offer">
+                  <form method="GET" action="/dealer/create-offer/{{id}}">
                   <input type="hidden" value="{{ id }}" name="listingID"/>
                   <th class="align-middle" scope="row">{{customerID}}</th>
                   <td class="align-middle">{{make}}</td>
@@ -267,8 +270,10 @@
                 {{/requests}}
               </tbody>
             </table>
+            <div class="text-center">
+              {{^requests}} There are no requests that match a car in your inventory. {{/requests}}
+            </div>
           </div>
-
         </div>
 
         <!-- OFFER TAB -->

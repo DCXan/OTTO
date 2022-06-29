@@ -12,7 +12,11 @@ dealerRouter.get("/dashboard", async (req, res) => {
     where: {dealerID: id}
   })
 
-  res.render("dealer-dashboard", {cars: myCars, user})
+  const carRequests = await models.carRequest.findAll({
+    order: [["createdAt", "DESC"]]
+  })
+
+  res.render("dealer-dashboard", {cars: myCars, requests: carRequests, user})
 })
 
 dealerRouter.post('/add-car', (req, res) => {

@@ -1,4 +1,4 @@
-    <html lang="en">
+    {{! <html lang="en">
       <head>
        
         <!-- CSS only -->
@@ -63,7 +63,26 @@
               <h3 class="mt-4 d-flex justify-content-center">Submit a Request</h3>
               
 
-              
+              <!--- -->
+              <section class="bg-light">
+                <div class="container">
+                  <div class="text-center">
+                  <h2>Stay in the loop</h2>
+                  <p class ="lead">GEt the latest update<p>
+                  </div>
+                  <div class= "row justify content-center">
+                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reg-modal">Submit Request</button>
+                  </div>
+                  </section>
+                  <div class ="modal fade" id="reg-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="modal-title">Get the latest updates</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </div>
+                
+              <!--- -->
 
                 <div class="row">
                   <div class="col-6">
@@ -72,13 +91,10 @@
                       <label > Make</label>
                       <select name="make" required>
                       <option value="" disabled selected hidden>Make</option>
-                      <option>Lexus</option>
+                      <option>Ford</option>
                       <option>Toyota</option>
-                      <option>BMW</option>
-                      <option>Mercedes</option>
                       <option>Honda</option>
-                      <option>Jeep</option>
-                      <option>Acura</option>
+                      <option>Volkswagen</option>
                       </select>
                     
                     </div>
@@ -124,7 +140,7 @@
 
 
                      {{! <div class="range"> }}
-                            <div class="form-group mt-5">
+                            {{! <div class="form-group mt-5">
                             <input type="range" class="form-range" value="10000" id="send" min="$1" max="100000" oninput="result.value = send.value" name="price"/>
                            <h5>Max Price:</h5>   
                            $<output id ="result">10000</output>
@@ -177,4 +193,4 @@
         ></script>
       </body>
     </html>
-    
+     }} }}

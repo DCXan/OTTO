@@ -16,11 +16,13 @@ module.exports = (sequelize, DataTypes) => {
   carRequest.init({
     make: DataTypes.STRING,
     model: DataTypes.STRING,
-    year: DataTypes.INTEGER,
+    minYear: DataTypes.INTEGER,
+    maxYear: DataTypes.INTEGER,
     color: DataTypes.STRING,
     maxMileage: DataTypes.INTEGER,
     maxPrice: DataTypes.INTEGER,
     customerID: DataTypes.INTEGER
+
   }, {
     sequelize,
     modelName: 'carRequest',

@@ -39,4 +39,16 @@ dealerRouter.post('/add-car', (req, res) => {
   })
 })
 
+dealerRouter.post('/delete-car', async (req, res) => {
+
+  const id = req.body.listingID
+
+  const deletedCar = await models.Inventory.destroy({
+    where: {id: id}
+  })
+
+  res.redirect('/dealer/dashboard')
+
+})
+
 module.exports = dealerRouter

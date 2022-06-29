@@ -114,6 +114,7 @@
                       {{#cars}}
                       <tr>
                         <form method="POST" action="/dealer/delete-car">
+                        <input type="hidden" value="{{ id }}" name="listingID"/>
                         <th class="align-middle" scope="row">{{id}}</th>
                         <td class="align-middle">{{make}}</td>
                         <td class="align-middle">{{model}}</td>

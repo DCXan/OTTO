@@ -13,10 +13,21 @@ dealerRouter.get("/dashboard", async (req, res) => {
   })
 
   const carRequests = await models.carRequest.findAll({
+    where: {fulfilled: false},
     order: [["createdAt", "DESC"]]
   })
 
-  res.render("dealer-dashboard", {cars: myCars, requests: carRequests, user})
+  const filteredCarRequests = []
+  
+  carRequests.map(requestedCar => {
+     myCars.filter(inventoryCar => {
+      if (inventoryCar.make == requestedCar.make && inventoryCar.model == requestedCar.model){
+        filteredCarRequests.push(requestedCar)
+      }
+    })
+  })
+
+  res.render("dealer-dashboard", {cars: myCars, requests: filteredCarRequests, user})
 })
 
 dealerRouter.post('/add-car', (req, res) => {
@@ -54,5 +65,6 @@ dealerRouter.post('/delete-car', async (req, res) => {
   res.redirect('/dealer/dashboard')
 
 })
+
 
 module.exports = dealerRouter

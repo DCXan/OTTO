@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     color: DataTypes.STRING,
     maxMileage: DataTypes.INTEGER,
     maxPrice: DataTypes.INTEGER,
-    customerID: DataTypes.INTEGER
+    customerID: DataTypes.INTEGER,
+    fulfilled: DataTypes.BOOLEAN
 
   }, {
     sequelize,

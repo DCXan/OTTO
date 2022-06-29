@@ -5,9 +5,14 @@ const dealerRouter = express.Router()
 
 dealerRouter.get("/dashboard", async (req, res) => {
 
-  // const myCars = await models.
+  const id = req.session.dealerID
+  const user = req.session.firstName
 
-  res.render("dealer-dashboard")
+  const myCars = await models.Inventory.findAll({
+    where: {dealerID: id}
+  })
+
+  res.render("dealer-dashboard", {cars: myCars, user})
 })
 
 dealerRouter.post('/add-car', (req, res) => {

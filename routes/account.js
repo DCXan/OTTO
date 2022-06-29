@@ -112,6 +112,7 @@ accountRouter.post("/login", async (req, res) => {
               req.session.dealerFirstName = user.firstName
               req.session.dealerLastName = user.lastName
             }
+            console.log(req.session.dealerID)
             res.redirect("/dealer/dashboard")
           } else {
             res.render("login", {

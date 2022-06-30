@@ -40,6 +40,7 @@ dealerRouter.get("/dashboard", async (req, res) => {
   })
 
   res.render("dealer-dashboard", {cars: myCars, requests: filteredCarRequests, pendingOffers: pendingOffers, acceptedOffers: acceptedOffers, user})
+
 })
 
 /////////////////////// INVENTORY ////////////////////////

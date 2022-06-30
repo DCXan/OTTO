@@ -4,10 +4,10 @@ function authenticationMW(req, res, next) {
         if (req.session.userID) {
             next()
         } else {
-            res.render('login', {loginMessage: 'Please log in to view this page.'})
+            res.render('login', {message: 'Please log in to view this page.'})
         }
     } else {
-        res.render('login', {loginMessage: 'Please log in to view this page.'})
+        res.render('login', {message: 'Please log in to view this page.'})
     }
 }
 

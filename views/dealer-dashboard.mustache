@@ -252,7 +252,7 @@
               <tbody>
                 {{#requests}}
                 <tr>
-                  <form method="GET" action="/dealer/create-offer/{{id}}">
+                  <form method="GET" action="/dealer/create-offer/{{customerID}}/{{id}}">
                   <input type="hidden" value="{{ id }}" name="listingID"/>
                   <th class="align-middle" scope="row">{{customerID}}</th>
                   <td class="align-middle">{{make}}</td>

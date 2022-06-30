@@ -66,13 +66,17 @@ dealerRouter.post('/delete-car', async (req, res) => {
 
 })
 
-dealerRouter.get('/create-offer/:offerID', async (req, res) => {
+dealerRouter.get('/create-offer/:customerID/:requestID', async (req, res) => {
 
-  const id = req.params.offerID
+  const customerID = req.params.customerID
+  const requestID = req.params.requestID
 
-  // const request = await models.carRequest.findbyPk(id)
+  const request = await models.carRequest.findByPk(requestID)
+  const customer = await models.User.findOne({
+    where: {id: customerID}
+  })
 
-  res.render('offer') // add {{request}}
+  res.render('offer', {request, customer})
 })
 
 module.exports = dealerRouter

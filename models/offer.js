@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     offerPrice: DataTypes.INTEGER,
     dealerID: DataTypes.INTEGER,
     customerID: DataTypes.INTEGER,
-    requestID: DataTypes.INTEGER
+    requestID: DataTypes.INTEGER,
+    accepted: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Offer',

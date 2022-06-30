@@ -98,7 +98,8 @@ dealerRouter.post('/send-offer', (req, res) => {
     color: color,
     mileage: mileage,
     offerPrice: price,
-    dealerID: dealerID
+    dealerID: dealerID,
+    accepted: false
   })
   newOffer.save().then((savedOffer) =>{
     res.redirect('/dealer/dashboard')

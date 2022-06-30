@@ -117,14 +117,6 @@ dealerRouter.get('/create-offer/:customerID/:requestID', async (req, res) => {
     order: [["createdAt", "DESC"]]
   })
   
-  // carRequests.map(requestedCar => {
-  //    myCars.filter(inventoryCar => {
-  //     if (inventoryCar.make == requestedCar.make && inventoryCar.model == requestedCar.model){
-  //       filteredCarRequests.push(requestedCar)
-  //     }
-  //   })
-  // })
-
   const filteredCars = []
   
      myCars.filter(inventoryCar => {

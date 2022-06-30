@@ -44,7 +44,17 @@ customerRouter.post("/delete-request", async (req, res) => {
   res.redirect("/customer/dashboard")
 })
 
-// customerRouter.post("/myOffers", async (req,res)=>{
+customerRouter.post("/myOffers", async (req, res) => {
+  const acceptedRequest = await models.Offer.update({
+    accepted: "True",
+  })
+  res.redirect("/customer/dashboard")
+})
+
+// customerRouter.post("/decline",(req,res)=>{
 //   const
-// }
+// })
+
 module.exports = customerRouter
+
+// "dealer = null"

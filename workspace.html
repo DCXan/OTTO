@@ -114,6 +114,7 @@
                       {{#cars}}
                       <tr>
                         <form method="POST" action="/dealer/delete-car">
+                        <input type="hidden" value="{{ id }}" name="listingID"/>
                         <th class="align-middle" scope="row">{{id}}</th>
                         <td class="align-middle">{{make}}</td>
                         <td class="align-middle">{{model}}</td>
@@ -227,7 +228,137 @@
 
         <!-- REQUEST TAB -->
 
-        <div class="tab-pane fade" id="requests-tab-pane" role="tabpanel" aria-labelledby="requests-tab-pane">REQUEST TABLE</div>
+        <div class="tab-pane fade" id="requests-tab-pane" role="tabpanel" aria-labelledby="requests-tab-pane">
+          
+          <div class="container">
+
+            <!-- REQUEST TABLE -->
+            <table class="table table-striped table-hover mt-4">
+              <thead>
+                <tr>
+                  <th scope="col">Customer ID</th>
+                  <th scope="col">Make</th>
+                  <th scope="col">Model</th>
+                  <th scope="col">Min Year</th>
+                  <th scope="col">Max Year</th>
+                  <th scope="col">Color</th>
+                  <th scope="col">Max Mileage</th>
+                  <th scope="col">Requested On</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#requests}}
+                <tr>
+                  <form method="POST" action="/dealer/send-offer">
+                  <input type="hidden" value="{{ id }}" name="listingID"/>
+                  <th class="align-middle" scope="row">{{customerID}}</th>
+                  <td class="align-middle">{{make}}</td>
+                  <td class="align-middle">{{model}}</td>
+                  <td class="align-middle">{{minYear}}</td>
+                  <td class="align-middle">{{maxYear}}</td>
+                  <td class="align-middle">{{color}}</td>
+                  <td class="align-middle">{{maxMileage}}</td>
+                  <td class="align-middle">{{createdAt}}</td>
+                  <td class="align-middle">
+                    <button type="button" class="btn-sm rounded-3" data-bs-toggle="modal" data-bs-target="#create-offer-modal">Send an Offer</button>
+                  </td>
+                  </form>
+                </tr>
+                <!-- {{/requests}} -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="modal fade" id="create-offer-modal" tabindex="-1" aria-labelledby="create-offer-modal-title" aria-hidden="true">
+
+            <!-- MODAL POPUP -->
+        
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="add-car-modal-title">Send an Offer</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  
+                </div>
+        
+                <div class="modal-body">
+                  <p>Customer requests a {{minYear}} - {{maxYear}} {{color}} {{make}} {{model}} with no more than {{maxMileage}} miles,</p>
+
+                  {{/requests}}
+                  <!-- Create Offer FORM -->
+                  <form method="POST" action="/dealer/send-offer">
+                    <div class="row">
+                      <div class="col-6">
+                        <label for="modal-make" class="form-label ">Make:</label>
+                        <select class="form-control" id="modal-make" name="make" required>
+                        <option disabled selected hidden>Select Make</option>
+                        <option>Toyota</option>
+                        <option>Honda</option>
+                        <option>Ford</option>
+                        <option>Volkswagen</option>
+                        </select>
+                      </div>
+        
+                      <div class="col-6">
+                        <label for="modal-model" class="form-label">Model:</label>
+                        <select class="form-control" id="modal-model" name="model" required>
+                        <option disabled selected hidden>Select Model</option>
+                        <option>Camry</option>
+                        <option>Accord</option>
+                        <option>Explorer</option>
+                        <option>Jetta</option>
+                        </select>
+                      </div>
+                    </div>
+        
+                    <div class="row mt-4">
+        
+                      <div class="col-6">
+                        <label for="modal-year" class="form-label">Year:</label>
+                          <div class= "form-control" id="modal-year" name="year" required>
+                            <input type="number" min="1980" max="2023" step="1" value="2022" name="year"/>
+                          </div>
+                      </div>
+        
+                      <div class="col-6">
+                        <label for="modal-color" class="form-label">Color:</label>
+                        <select class="form-control" id="modal-color" name="color" required>
+                        <option disabled selected hidden>Select Color</option>
+                        <option>White</option>
+                        <option>Black</option>
+                        <option>Gray</option>
+                        <option>Red</option>
+                        <option>Blue</option>
+                        <option>Silver</option>
+                        </select>
+                      </div>
+        
+                    </div>
+        
+                    <div class="row justify-content-center text-center mt-4">
+                      <div class="col-10 mb-3">
+                        
+                          <label for="modal-mileage" class="form-label">Mileage: </label>
+                          <output id ="result">50000</output>
+                          <input type="range" class="form-range" min="0" max="250000" id="send" oninput= "result.value = send.value" name="mileage" value="50000">  
+        
+                    </div>
+                    <div class="row justify-content-center">
+                      <div class="col-4 mt-3">
+        
+                        <button class="btn btn-danger rounded-5">Submit Offer</button>
+                      </div>
+        
+                    </div>
+                  </form>
+                </div>
+        
+              </div>
+            </div>
+        
+          </div>
+
+        </div>
 
         <!-- OFFER TAB -->
 

@@ -130,6 +130,9 @@
                       {{/cars}}
                     </tbody>
                   </table>
+                  <div class="text-center">
+                    {{^cars}} You have no cars in your inventory. {{/cars}}
+                  </div>
                 </div>
   
               </div>
@@ -228,7 +231,50 @@
 
         <!-- REQUEST TAB -->
 
-        <div class="tab-pane fade" id="requests-tab-pane" role="tabpanel" aria-labelledby="requests-tab-pane">REQUEST TABLE</div>
+        <div class="tab-pane fade" id="requests-tab-pane" role="tabpanel" aria-labelledby="requests-tab-pane">
+          
+          <div class="container">
+
+            <!-- REQUEST TABLE -->
+            <table class="table table-striped table-hover mt-4">
+              <thead>
+                <tr>
+                  <th scope="col">Customer ID</th>
+                  <th scope="col">Make</th>
+                  <th scope="col">Model</th>
+                  <th scope="col">Min Year</th>
+                  <th scope="col">Max Year</th>
+                  <th scope="col">Color</th>
+                  <th scope="col">Max Mileage</th>
+                  <th scope="col">Requested On</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#requests}}
+                <tr>
+                  <form method="GET" action="/dealer/create-offer/{{customerID}}/{{id}}">
+                  <input type="hidden" value="{{ id }}" name="listingID"/>
+                  <th class="align-middle" scope="row">{{customerID}}</th>
+                  <td class="align-middle">{{make}}</td>
+                  <td class="align-middle">{{model}}</td>
+                  <td class="align-middle">{{minYear}}</td>
+                  <td class="align-middle">{{maxYear}}</td>
+                  <td class="align-middle">{{color}}</td>
+                  <td class="align-middle">{{maxMileage}}</td>
+                  <td class="align-middle">{{createdAt}}</td>
+                  <td class="align-middle">
+                    <button class="btn-sm rounded-3">Send an Offer</button>
+                  </td>
+                  </form>
+                </tr>
+                {{/requests}}
+              </tbody>
+            </table>
+            <div class="text-center">
+              {{^requests}} There are no requests that match a car in your inventory. {{/requests}}
+            </div>
+          </div>
+        </div>
 
         <!-- OFFER TAB -->
 

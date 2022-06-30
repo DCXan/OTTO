@@ -1,0 +1,211 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    Create an Offer Page
+    
+</body>
+</html><html lang="en">
+    <head>
+      <link href="/css/style.css" rel="stylesheet" />
+      <!-- CSS only -->
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+        crossorigin="anonymous"
+      />
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>OTTO</title>
+    </head>
+    <body>
+      <!-- NAVBAR -->
+  
+      <header>
+        <nav class="navbar fixed-top navbar-expand-lg bg-light">
+          <div class="container">
+            <a class="navbar-brand" href="#">
+              <img src="/images/small_logo.png" width="50" alt="Otto Logo" />
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/dealer/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Profile
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Account Settings</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/account/logout">Log Out</a></li>
+                  </ul>
+                </li>
+                  </form>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+  
+      <!-- MAIN SECTION -->
+  
+      <main class="container mt-4 py-5 text-center">
+        
+        <div class="row justify-content-center">
+            <div class="col-6 bg-light mt-4 rounded-3">
+    
+                <div class="row justify-content-center">
+                    <h1>Create an Offer</h1>
+                  </div>
+                  
+                  {{#request}} 
+          
+                    <div class="row justify-content-center">
+                        <div class="col-12 mt-5">
+                            <div class="row justify-content-center">
+                                {{#customer}}
+                                <h2>Customer: {{firstName}} {{lastName}}</h2>
+                                {{/customer}}
+                            </div>
+          
+                            <div class="row justify-content-center mt-3">
+                                <div class="col-10 bg-light rounded-3">
+                  
+                                  <h4>Request Details:</h4>
+                                  <h6>Make: {{make}}</h6>
+                                  <h6>Model: {{model}}</h6>
+                                  <h6>Year: {{minYear}} - {{maxYear}}</h6>
+                                  <h6>Color: {{color}}</h6>
+                                  <h6>Max Mileage: {{maxMileage}}</h6>
+                                </div>
+                                {{/request}}
+          
+                          </div>
+                        </div> 
+                      
+                    </div>
+    
+            </div>
+
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-6 bg-light mt-4 rounded-3">
+                <form method="POST" action="/dealer/send-offer">
+                    <div class="row">
+                        <div class="col-6">
+                        <label for="make" class="form-label ">Make:</label>
+                        <select class="form-control" id="make" name="make" required>
+                        <option disabled selected hidden>Select Make</option>
+                        <option>Toyota</option>
+                        <option>Honda</option>
+                        <option>Ford</option>
+                        <option>Volkswagen</option>
+                        </select>
+                        </div>
+    
+                        <div class="col-6">
+                        <label for="model" class="form-label">Model:</label>
+                        <select class="form-control" id="model" name="model" required>
+                        <option disabled selected hidden>Select Model</option>
+                        <option>Camry</option>
+                        <option>Accord</option>
+                        <option>Explorer</option>
+                        <option>Jetta</option>
+                        </select>
+                        </div>
+                    </div>
+    
+                    <div class="row mt-4">
+    
+                        <div class="col-6">
+                        <label for="year" class="form-label">Year:</label>
+                            <div class= "form-control" id="year" name="year" required>
+                            <input type="number" min="1980" max="2023" step="1" value="2022" name="year"/>
+                            </div>
+                        </div>
+    
+                        <div class="col-6">
+                        <label for="color" class="form-label">Color:</label>
+                        <select class="form-control" id="color" name="color" required>
+                        <option disabled selected hidden>Select Color</option>
+                        <option>White</option>
+                        <option>Black</option>
+                        <option>Gray</option>
+                        <option>Red</option>
+                        <option>Blue</option>
+                        <option>Silver</option>
+                        </select>
+                        </div>
+    
+                    </div>
+    
+                    <div class="row justify-content-center text-center mt-4">
+                        <div class="col-6 mb-3">
+                        
+                            <label for="mileage" class="form-label">Mileage: </label>
+                            <output id ="result">50000</output>
+                            <input type="range" class="form-range" min="0" max="250000" id="send" oninput= "result.value = send.value" name="mileage" value="50000">  
+    
+                    </div>
+    
+                    <div class="row mt-4 justify-content-center">
+    
+                        <div class="col-6">
+                            <label for="price" class="form-label">Price:</label>
+                            <div class= "form-control" id="offer-price" name="price" required>
+                                $<input type="number" min="0" max="100000" step="1" value="20000" name="price"/>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row justify-content-center">
+                        <div class="col-4 mt-3">
+                            <button class="btn btn-danger rounded-5">Send Offer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        
+      </main>
+  
+      <!-- FOOTER -->
+  
+      <footer class="footer fixed-bottom mt-auto mb-0 py-3 bg-light">
+        <div class="container-fluid text-center">
+          <span class="text-muted">Created with Bootstrap v5.2.0</span>
+        </div>
+      </footer>
+  
+      <!-- JavaScript Bundle with Popper -->
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"
+      ></script>
+    </body>
+  </html>
+  

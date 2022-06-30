@@ -12,7 +12,22 @@ dealerRouter.get("/dashboard", async (req, res) => {
     where: {dealerID: id}
   })
 
-  res.render("dealer-dashboard", {cars: myCars, user})
+  const carRequests = await models.carRequest.findAll({
+    where: {fulfilled: false},
+    order: [["createdAt", "DESC"]]
+  })
+
+  const filteredCarRequests = []
+  
+  carRequests.map(requestedCar => {
+     myCars.filter(inventoryCar => {
+      if (inventoryCar.make == requestedCar.make && inventoryCar.model == requestedCar.model){
+        filteredCarRequests.push(requestedCar)
+      }
+    })
+  })
+
+  res.render("dealer-dashboard", {cars: myCars, requests: filteredCarRequests, user})
 })
 
 dealerRouter.post('/add-car', (req, res) => {
@@ -49,6 +64,45 @@ dealerRouter.post('/delete-car', async (req, res) => {
 
   res.redirect('/dealer/dashboard')
 
+})
+
+dealerRouter.get('/create-offer/:customerID/:requestID', async (req, res) => {
+
+  const customerID = req.params.customerID
+  const requestID = req.params.requestID
+
+  const request = await models.carRequest.findByPk(requestID)
+  const customer = await models.User.findOne({
+    where: {id: customerID}
+  })
+
+  res.render('offer', {request, customer})
+})
+
+dealerRouter.post('/send-offer', (req, res) => {
+  
+  console.log(req.body)
+
+  const dealerID = req.session.dealerID
+  const make = req.body.make
+  const model = req.body.model
+  const year = req.body.year
+  const color = req.body.color
+  const mileage = req.body.mileage
+  const price = req.body.price
+
+  const newOffer = models.Offer.build({
+    make: make,
+    model: model,
+    year: year,
+    color: color,
+    mileage: mileage,
+    offerPrice: price,
+    dealerID: dealerID
+  })
+  newOffer.save().then((savedOffer) =>{
+    res.redirect('/dealer/dashboard')
+  })
 })
 
 module.exports = dealerRouter

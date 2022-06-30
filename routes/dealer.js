@@ -79,11 +79,13 @@ dealerRouter.get('/create-offer/:customerID/:requestID', async (req, res) => {
   res.render('offer', {request, customer})
 })
 
-dealerRouter.post('/send-offer', (req, res) => {
+dealerRouter.post('/send-offer/:customerID/:requestID', (req, res) => {
   
   console.log(req.body)
 
   const dealerID = req.session.dealerID
+  const customerID = req.params.customerID
+  const requestID = req.params.requestID
   const make = req.body.make
   const model = req.body.model
   const year = req.body.year
@@ -98,7 +100,9 @@ dealerRouter.post('/send-offer', (req, res) => {
     color: color,
     mileage: mileage,
     offerPrice: price,
-    dealerID: dealerID
+    dealerID: dealerID,
+    customerID: customerID,
+    requestID: requestID
   })
   newOffer.save().then((savedOffer) =>{
     res.redirect('/dealer/dashboard')

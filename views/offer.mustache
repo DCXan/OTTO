@@ -112,7 +112,9 @@
 
         <div class="row justify-content-center">
             <div class="col-6 bg-light mt-4 rounded-3">
-                <form method="POST" action="/dealer/send-offer">
+                {{#request}}
+                <form method="POST" action="/dealer/send-offer/{{customerID}}/{{id}}">
+                {{/request}}
                     <div class="row">
                         <div class="col-6">
                       

@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.carRequest.hasMany(models.Offer, { as: 'offers', foreignKey: 'customerID'})
     }
   }
   carRequest.init({

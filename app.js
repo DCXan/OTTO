@@ -38,7 +38,7 @@ app.set("view engine", "mustache")
 
 app.use(express.static("public"))
 
-let PORT = 8000
+let PORT = process.env.PORT || 8080
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
 })

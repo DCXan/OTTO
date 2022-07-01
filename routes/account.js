@@ -100,9 +100,9 @@ accountRouter.post("/login", async (req, res) => {
           if (passwordsEqual && user.accountType == "customer") {
             if (req.session) {
               req.session.customerID = user.id
-              req.session.buyerUsername = user.email
-              req.session.buyerFirstName = user.firstName
-              req.session.buyerLastName = user.lastName
+              req.session.customerUsername = user.email
+              req.session.customerFirstName = user.firstName
+              req.session.customerLastName = user.lastName
             }
             res.redirect("/customer/dashboard")
           } else if (passwordsEqual && user.accountType == "dealer") {

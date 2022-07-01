@@ -5,13 +5,21 @@ const { sequelize } = require("../models")
 const customerRouter = express.Router()
 customerRouter.get("/dashboard", async (req, res) => {
   const id = req.session.customerID
+  const firstName = req.session.customerFirstName
   const linkOffer = await models.Offer.findAll({
     where: { customerID: id, accepted: false },
   })
   const myRequest = await models.carRequest.findAll({
     where: { customerID: id },
   })
-  res.render("customer-dashboard", { request: myRequest, myOffer: linkOffer })
+  const myProfile = await models.User.findAll({
+    where: { firstName: firstName },
+  })
+  res.render("customer-dashboard", {
+    request: myRequest,
+    myOffer: linkOffer,
+    profile: myProfile,
+  })
 })
 customerRouter.post("/dashboard", async (req, res) => {
   const make = req.body.make
@@ -63,7 +71,7 @@ customerRouter.post("/myOffers", async (req, res) => {
 customerRouter.post("/decline", async (req, res) => {
   const offerID = req.body.offerID
   const declineRequest = await models.Offer.destroy({ where: { id: offerID } })
-  res.redirect("/customer/dashboard")
+  res.redirect("/customer/success")
 })
 
 module.exports = customerRouter

@@ -43,7 +43,7 @@
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {{#userProfile}}
-                  {{firstName}}'s Profile
+                   Welcome, {{firstName}}
                 {{/userProfile}}
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -164,10 +164,27 @@
                           <label for="modal-model" class="form-label">Model:</label>
                           <select class="form-control" id="modal-model" name="model" required>
                           <option disabled selected hidden>Select Model</option>
-                          <option>Camry</option>
-                          <option>Accord</option>
-                          <option>Explorer</option>
-                          <option>Jetta</option>
+                         
+                              <option data-belong="Toyota">Camry</option>
+                              <option data-belong="Toyota">Corolla</option>
+                              <option data-belong="Toyota">Prius</option>
+                              <option data-belong="Toyota">Tacoma</option>
+                             
+                              <option data-belong="Honda">Civic</option>
+                              <option data-belong="Honda">Accord</option>
+                              <option data-belong="Honda">Odyssey</option>
+                              <option data-belong="Honda">Pilot</option>
+                             
+                              <option data-belong="Ford">Bronco</option>
+                              <option data-belong="Ford">F-150</option>
+                              <option data-belong="Ford">Explorer</option>
+                              <option data-belong="Ford">Mustang</option>
+                             
+                              <option data-belong="Volkswagen">Golf</option>
+                              <option data-belong="Volkswagen">Atlas</option>
+                              <option data-belong="Volkswagen">Tiguan</option>
+                              <option data-belong="Volkswagen">Jetta</option>
+                              
                           </select>
                         </div>
                       </div>

@@ -30,6 +30,7 @@ customerRouter.post("/dashboard", async (req, res) => {
   const price = req.body.price
   const mileage = req.body.mileage
   const customerID = req.session.customerID
+
   // creating customer object
 
   const newRequest = await models.carRequest.build({

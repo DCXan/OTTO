@@ -43,7 +43,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {{#profile}}
-                  {{firstName}}'s Profile
+                   Welcome, {{firstName}}
                  {{/profile}} 
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -181,7 +181,7 @@
                               <option data-belong="Ford">Explorer</option>
                               <option data-belong="Ford">Mustang</option>
                              
-                              <option data-belong="Volkswagen">Gold</option>
+                              <option data-belong="Volkswagen">Golf</option>
                               <option data-belong="Volkswagen">Atlas</option>
                               <option data-belong="Volkswagen">Tiguan</option>
                               <option data-belong="Volkswagen">Jetta</option>
@@ -263,13 +263,15 @@
                               <div class="card-body">
                               
                           
-                         
-                              
+                                
+                              <h5 class="card-title">{{}}</h5>
                               <h5 class="card-title">{{make}} {{model}}</h5>
                               <h6 class="card-subtitle mb-2 text-muted">{{year}}</h6>
                               <p class="card-text">color : {{color}}</p>
                               <p class="card-text">Mileage: {{mileage}}</p>
                               <p class="card-text">Offered Price: <b>${{offerPrice}}</b></p>
+                              <p class="card-text">Offered by Dealer: {{dealerID}}</p>
+                              
 
                               
                               

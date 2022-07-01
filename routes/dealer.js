@@ -24,7 +24,9 @@ dealerRouter.get("/dashboard", async (req, res) => {
   carRequests.map(requestedCar => {
      myCars.filter(inventoryCar => {
       if (inventoryCar.make == requestedCar.make && inventoryCar.model == requestedCar.model){
-        filteredCarRequests.push(requestedCar)
+        if (!filteredCarRequests.includes(requestedCar)) {
+          filteredCarRequests.push(requestedCar)
+        }
       }
     })
   })
@@ -95,6 +97,7 @@ dealerRouter.post('/delete-offer', async (req, res) => {
   res.redirect('/dealer/dashboard')
 
 })
+// Display Offer Page //
 
 dealerRouter.get('/create-offer/:customerID/:requestID', async (req, res) => {
   
@@ -107,20 +110,13 @@ dealerRouter.get('/create-offer/:customerID/:requestID', async (req, res) => {
     where: {id: customerID}
   })
 
-  const myCars = await models.Inventory.findAll({
+  const inventory = await models.Inventory.findAll({
     where: {dealerID: dealerID}
   })
 
-  const filteredCarRequests = []
-
-  const carRequests = await models.carRequest.findAll({
-    where: {fulfilled: false},
-    order: [["createdAt", "DESC"]]
-  })
-  
   const filteredCars = []
   
-     myCars.filter(inventoryCar => {
+     inventory.filter(inventoryCar => {
       if (inventoryCar.make == request.make && inventoryCar.model == request.model){
         filteredCars.push(inventoryCar)
       }
@@ -129,6 +125,8 @@ dealerRouter.get('/create-offer/:customerID/:requestID', async (req, res) => {
 
   res.render('offer', {inventory: filteredCars, request, customer})
 })
+
+// Send the Offer to database //
 
 dealerRouter.post('/send-offer/:customerID/:requestID', (req, res) => {
   

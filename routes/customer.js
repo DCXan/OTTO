@@ -3,6 +3,7 @@
 const express = require("express")
 const { sequelize } = require("../models")
 const customerRouter = express.Router()
+
 customerRouter.get("/dashboard", async (req, res) => {
   const id = req.session.customerID
   const firstName = req.session.customerFirstName
@@ -10,15 +11,13 @@ customerRouter.get("/dashboard", async (req, res) => {
     where: { customerID: id, accepted: false },
   })
   const myRequest = await models.carRequest.findAll({
-    where: { customerID: id },
+    where: { customerID: id }
   })
-  const myProfile = await models.User.findAll({
-    where: { firstName: firstName },
-  })
+  
   res.render("customer-dashboard", {
     request: myRequest,
     myOffer: linkOffer,
-    profile: myProfile,
+    firstName,
   })
 })
 customerRouter.post("/dashboard", async (req, res) => {

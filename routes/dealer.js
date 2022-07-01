@@ -17,10 +17,7 @@ dealerRouter.get("/dashboard", async (req, res) => {
     where: { fulfilled: false },
     order: [["createdAt", "DESC"]],
   })
-  const userProfile = await models.User.findAll({
-    where: { firstName: user },
-  })
-
+  
   const filteredCarRequests = []
 
   carRequests.map(requestedCar => {
@@ -51,7 +48,7 @@ dealerRouter.get("/dashboard", async (req, res) => {
     requests: filteredCarRequests,
     pendingOffers: pendingOffers,
     acceptedOffers: acceptedOffers,
-    userProfile: userProfile,
+    user
   })
 })
 

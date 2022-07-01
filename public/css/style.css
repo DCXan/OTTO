@@ -10,8 +10,7 @@ body {
 
 .dropdown-item:active {
   background-color: red !important;
-  }
-
+}
 
 .nav-link {
   color: black !important;

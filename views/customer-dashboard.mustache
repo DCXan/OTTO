@@ -2,6 +2,7 @@
   <head>
     <link href="/css/style.css" rel="stylesheet" />
     <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -104,7 +105,7 @@
                               <div class="card-body">
                                <form method="POST" action="/customer/delete-request">
                           
-                         
+                              
                               
                               <h5 class="card-title">{{make}} {{model}}</h5>
                               <h6 class="card-subtitle mb-2 text-muted">{{minYear}} - {{maxYear}}</h6>
@@ -149,24 +150,39 @@
                       <div class="row">
                         <div class="col-6">
                           <label for="modal-make" class="form-label ">Make:</label>
-                          <select class="form-control" id="modal-make" name="make" required>
+                          <select class="form-control" id="modal-make" data-target="make" name="make" required>
                           <option disabled selected hidden>Select Make</option>
-                          <option>Toyota</option>
-                          <option>Honda</option>
-                          <option>Ford</option>
-                          <option>Volkswagen</option>
+                          <option data-ref="Toyota">Toyota</option>
+                          <option data-ref="Honda">Honda</option>
+                          <option data-ref="Ford">Ford</option>
+                          <option data-ref="Volkswagen">Volkswagen</option>
                           </select>
                         </div>
-
+                          
                         <div class="col-6">
-                          <label for="modal-model" class="form-label">Model:</label>
-                          <select class="form-control" id="modal-model" name="model" required>
-                          <option disabled selected hidden>Select Model</option>
-                          <option>Camry</option>
-                          <option>Accord</option>
-                          <option>Explorer</option>
-                          <option>Jetta</option>
-                          </select>
+                              <label for="modal-model" class="form-label">Model:</label>
+                              <select class="form-control" id="modal-model" name="model" required>
+                              <option disabled selected hidden>Select Model</option>
+                              <option data-belong="Toyota">Camry</option>
+                              <option data-belong="Toyota">Corolla</option>
+                              <option data-belong="Toyota">Prius</option>
+                              <option data-belong="Toyota">Tacoma</option>
+                             
+                              <option data-belong="Honda">Civic</option>
+                              <option data-belong="Honda">Accord</option>
+                              <option data-belong="Honda">Odyssey</option>
+                              <option data-belong="Honda">Pilot</option>
+                             
+                              <option data-belong="Ford">Bronco</option>
+                              <option data-belong="Ford">F-150</option>
+                              <option data-belong="Ford">Explorer</option>
+                              <option data-belong="Ford">Mustang</option>
+                             
+                              <option data-belong="Volkswagen">Gold</option>
+                              <option data-belong="Volkswagen">Atlas</option>
+                              <option data-belong="Volkswagen">Tiguan</option>
+                              <option data-belong="Volkswagen">Jetta</option>
+                              </select>
                         </div>
                       </div>
 
@@ -237,7 +253,7 @@
         
           <div class="container text-center mt-5">
                       <div class="row justify-content-center "> 
-                      {{#request}}
+                      {{#myOffer}}
                         <div class="card mt-3 " style="width: 18rem; height:auto;">  
                        
                         
@@ -250,10 +266,10 @@
                               <h6 class="card-subtitle mb-2 text-muted">{{year}}</h6>
                               <p class="card-text">color : {{color}}</p>
                               <p class="card-text">Mileage: {{mileage}}</p>
-                              <p class="card-text">Offered Price: <b>${{maxPrice}}</b></p>
+                              <p class="card-text">Offered Price: <b>${{offerPrice}}</b></p>
 
                               
-                              <input type="hidden" value="{{id}}" name="declineID">
+                              
                               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#acceptModal">
                                 Accept
                               </button>
@@ -270,8 +286,12 @@
                                     <!-- Accept Offer-->
                                     
                                       <form class="d-inline-block" method="POST" action="/customer/myOffers">
+                                        
+                                          <input type="hidden" value="{{id}}" name="offerID">
+                                          <p>{{id}}
+                                      
                                           <button class="btn btn-success" >Yes</button>
-                                        </form>
+                                      </form>
                                     
 
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
@@ -294,8 +314,12 @@
                                         </div>
                                         <div class="modal-body">
                                          <!-- Decline Offer-->
-                                        <form class="d-inline-block" action="/customer/decline">
-                                          <button  class="btn btn-danger">Yes</button>
+                                        <form class="d-inline-block" method="POST"action="/customer/decline">
+                                  
+                                            <input type="hidden" value="{{id}}" name="offerID">
+                                            <p>{{id}}
+                                           
+                                            <button  class="btn btn-danger">Yes</button>
                                         </form>
                                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                                         </div>
@@ -309,7 +333,7 @@
                               </div>   
                            
                         </div>
-                        {{/request}}    
+                        {{/myOffer}}    
                         </div> 
                     </div>
         
@@ -322,11 +346,17 @@
 
     <footer class="footer fixed-bottom mt-auto mb-0 py-3 bg-light">
       <div class="container-fluid text-center">
-        <span class="text-muted">Created with Bootstrap v5.2.0</span>
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>  
       </div>
     </footer>
 
     <!-- JavaScript Bundle with Popper -->
+    <script 
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+      crossorigin="anonymous">
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"

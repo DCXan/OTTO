@@ -5,10 +5,13 @@ const { sequelize } = require("../models")
 const customerRouter = express.Router()
 customerRouter.get("/dashboard", async (req, res) => {
   const id = req.session.customerID
+  const linkOffer = await models.Offer.findAll({
+    where: { customerID: id, accepted: false },
+  })
   const myRequest = await models.carRequest.findAll({
     where: { customerID: id },
   })
-  res.render("customer-dashboard", { request: myRequest })
+  res.render("customer-dashboard", { request: myRequest, myOffer: linkOffer })
 })
 customerRouter.post("/dashboard", async (req, res) => {
   const make = req.body.make
@@ -45,16 +48,22 @@ customerRouter.post("/delete-request", async (req, res) => {
 })
 
 customerRouter.post("/myOffers", async (req, res) => {
-  const acceptedRequest = await models.Offer.update({
-    accepted: "True",
-  })
+  const offerID = req.body.offerID
+  const acceptedRequest = await models.Offer.update(
+    {
+      accepted: "True",
+    },
+    {
+      where: { id: offerID },
+    }
+  )
   res.redirect("/customer/dashboard")
 })
 
-// customerRouter.post("/decline",(req,res)=>{
-//   const
-// })
+customerRouter.post("/decline", async (req, res) => {
+  const offerID = req.body.offerID
+  const declineRequest = await models.Offer.destroy({ where: { id: offerID } })
+  res.redirect("/customer/dashboard")
+})
 
 module.exports = customerRouter
-
-// "dealer = null"

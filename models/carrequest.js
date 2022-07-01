@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict"
+const { Model } = require("sequelize")
 module.exports = (sequelize, DataTypes) => {
   class carRequest extends Model {
     /**
@@ -11,23 +9,29 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.carRequest.hasMany(models.Offer, { as: 'offers', foreignKey: 'customerID'})
+      models.carRequest.hasMany(models.Offer, {
+        as: "offers",
+        foreignKey: "requestID",
+      })
     }
   }
-  carRequest.init({
-    make: DataTypes.STRING,
-    model: DataTypes.STRING,
-    minYear: DataTypes.INTEGER,
-    maxYear: DataTypes.INTEGER,
-    color: DataTypes.STRING,
-    maxMileage: DataTypes.INTEGER,
-    maxPrice: DataTypes.INTEGER,
-    customerID: DataTypes.INTEGER,
-    fulfilled: DataTypes.BOOLEAN
-
-  }, {
-    sequelize,
-    modelName: 'carRequest',
-  });
-  return carRequest;
-};
+  carRequest.init(
+    {
+      make: DataTypes.STRING,
+      model: DataTypes.STRING,
+      minYear: DataTypes.INTEGER,
+      maxYear: DataTypes.INTEGER,
+      color: DataTypes.STRING,
+      maxMileage: DataTypes.INTEGER,
+      maxPrice: DataTypes.INTEGER,
+      customerID: DataTypes.INTEGER,
+      fulfilled: DataTypes.BOOLEAN,
+    },
+    {
+      sequelize,
+      modelName: "carRequest",
+      onDelete: "CASCADE",
+    }
+  )
+  return carRequest
+}

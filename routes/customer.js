@@ -48,7 +48,9 @@ customerRouter.post("/dashboard", async (req, res) => {
 })
 customerRouter.post("/delete-request", async (req, res) => {
   const deleteID = req.body.deleteID
-
+  const deleteOffer = await models.Offer.destroy({
+    where: { requestID: deleteID },
+  })
   const deleteRequest = await models.carRequest.destroy({
     where: { id: deleteID },
   })

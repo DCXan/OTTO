@@ -107,6 +107,7 @@ dealerRouter.get("/create-offer/:customerID/:requestID", async (req, res) => {
   const dealerID = req.session.dealerID
   const customerID = req.params.customerID
   const requestID = req.params.requestID
+  const user = req.session.dealerFirstName
 
   const request = await models.carRequest.findByPk(requestID)
   const customer = await models.User.findOne({
@@ -120,6 +121,10 @@ dealerRouter.get("/create-offer/:customerID/:requestID", async (req, res) => {
     where: { dealerID: dealerID },
   })
 
+  const userProfile = await models.User.findAll({
+    where: { firstName: user },
+  })
+
   const filteredCars = []
 
   inventory.filter(inventoryCar => {
@@ -131,7 +136,12 @@ dealerRouter.get("/create-offer/:customerID/:requestID", async (req, res) => {
     }
   })
 
-  res.render("offer", { inventory: filteredCars, request, customer })
+  res.render("offer", {
+    inventory: filteredCars,
+    request,
+    customer,
+    userProfile: userProfile,
+  })
 })
 
 // Send the Offer to database //

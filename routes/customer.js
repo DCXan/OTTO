@@ -65,13 +65,30 @@ customerRouter.post("/myOffers", async (req, res) => {
       where: { id: offerID },
     }
   )
-  res.redirect("/customer/dashboard")
+  res.redirect("/customer/success")
 })
 
 customerRouter.post("/decline", async (req, res) => {
   const offerID = req.body.offerID
   const declineRequest = await models.Offer.destroy({ where: { id: offerID } })
-  res.redirect("/customer/success")
+  res.redirect("/customer/delete")
 })
 
 module.exports = customerRouter
+
+customerRouter.get("/success", async (req, res) => {
+  const id = req.session.customerID
+  const firstName = req.session.customerFirstName
+  const myProfile = await models.User.findAll({
+    where: { firstName: firstName },
+  })
+  res.render("success", { profile: myProfile })
+})
+customerRouter.get("/delete", async (req, res) => {
+  const id = req.session.customerID
+  const firstName = req.session.customerFirstName
+  const myProfile = await models.User.findAll({
+    where: { firstName: firstName },
+  })
+  res.render("delete-request", { profile: myProfile })
+})

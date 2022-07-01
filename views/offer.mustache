@@ -1,7 +1,9 @@
 <html lang="en">
     <head>
+      <link href="/css/icons.css" rel="stylesheet" />
       <link href="/css/style.css" rel="stylesheet" />
       <!-- CSS only -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -40,7 +42,9 @@
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Profile
+                    {{#userProfile}}
+                  {{firstName}}'s Profile
+                {{/userProfile}}
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#">Account Settings</a></li>
@@ -226,8 +230,13 @@
   
       <footer class="footer fixed-bottom mt-auto mb-0 py-3 bg-light">
         <div class="container-fluid text-center">
-          <span class="text-muted">Created with Bootstrap v5.2.0</span>
-        </div>
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>  
+        <a href="#" class="fa fa-google"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+        <a href="#" class="fa fa-youtube"></a>
+        <a href="#" class="fa fa-instagram"></a>
+      </div>
       </footer>
   
       <!-- JavaScript Bundle with Popper -->

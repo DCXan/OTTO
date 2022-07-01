@@ -1,7 +1,7 @@
 <html lang="en">
   <head>
     <link href="/css/style.css" rel="stylesheet" />
-    <link href="/css/style.css" rel="icons" />
+    <link href="/css/icons.css" rel="stylesheet" />
     <!-- CSS only -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
@@ -95,7 +95,7 @@
               
                 <!-- ADD CAR BUTTON -->
 
-                <div class="btn btn-danger mt-4 mb-3 rounded-5" data-bs-toggle="modal" data-bs-target="#add-car-modal">Add New Car</div>
+                <div class="btn btn-primary mt-4 mb-3 rounded-5" data-bs-toggle="modal" data-bs-target="#add-car-modal">Add New Car</div>
 
                
                  
@@ -230,7 +230,7 @@
                       <div class="row justify-content-center">
                         <div class="col-4 mt-3">
 
-                          <button class="btn btn-danger rounded-5">Add Car</button>
+                          <button class="btn btn-primary rounded-5">Add Car</button>
                         </div>
 
                       </div>
@@ -291,9 +291,9 @@
                                       <form class="d-inline-block" method="POST" action="/customer/myOffers">
                                         
                                           <input type="hidden" value="{{id}}" name="offerID">
-                                          <p>{{id}}
+                                         
                                       
-                                          <button class="btn btn-success" >Yes</button>
+                                          <button class="btn btn-primary" >Yes</button>
                                       </form>
                                     
 
@@ -303,7 +303,7 @@
                                   </div>
                                 </div>
                               </div>
-                              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#declineModal">
+                              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#declineModal">
                                     Decline
                                   </button>
 
@@ -320,7 +320,7 @@
                                         <form class="d-inline-block" method="POST"action="/customer/decline">
                                   
                                             <input type="hidden" value="{{id}}" name="offerID">
-                                            <p>{{id}}
+                                        
                                            
                                             <button  class="btn btn-danger">Yes</button>
                                         </form>

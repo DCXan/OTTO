@@ -21,34 +21,15 @@ dealerRouter.get("/dashboard", async (req, res) => {
   const filteredCarRequests = []
 
   carRequests.map(requestedCar => {
-<<<<<<< HEAD
-    myCars.filter(inventoryCar => {
-      if (
-        inventoryCar.make == requestedCar.make &&
-        inventoryCar.model == requestedCar.model
-      ) {
-        filteredCarRequests.push(requestedCar)
-=======
      myCars.filter(inventoryCar => {
       if (inventoryCar.make == requestedCar.make && inventoryCar.model == requestedCar.model){
         if (!filteredCarRequests.includes(requestedCar)) {
           filteredCarRequests.push(requestedCar)
         }
->>>>>>> aa7badfda14d424ae2a439f794675a430a3a84bb
       }
     })
   })
 
-<<<<<<< HEAD
-  res.render("dealer-dashboard", {
-    cars: myCars,
-    requests: filteredCarRequests,
-    user,
-  })
-})
-
-dealerRouter.post("/add-car", (req, res) => {
-=======
   const pendingOffers = await models.Offer.findAll({
     where: {accepted: false},
     order: [["createdAt", "DESC"]]
@@ -67,7 +48,6 @@ dealerRouter.post("/add-car", (req, res) => {
 
 dealerRouter.post('/add-car', (req, res) => {
   
->>>>>>> aa7badfda14d424ae2a439f794675a430a3a84bb
   console.log(req.body)
 
   const dealerID = req.session.dealerID
@@ -100,9 +80,6 @@ dealerRouter.post("/delete-car", async (req, res) => {
   res.redirect("/dealer/dashboard")
 })
 
-<<<<<<< HEAD
-dealerRouter.get("/create-offer/:customerID/:requestID", async (req, res) => {
-=======
 
 /////////////////////// OFFERS ////////////////////////
 
@@ -122,7 +99,6 @@ dealerRouter.post('/delete-offer', async (req, res) => {
 dealerRouter.get('/create-offer/:customerID/:requestID', async (req, res) => {
   
   const dealerID = req.session.dealerID
->>>>>>> aa7badfda14d424ae2a439f794675a430a3a84bb
   const customerID = req.params.customerID
   const requestID = req.params.requestID
 
@@ -134,12 +110,6 @@ dealerRouter.get('/create-offer/:customerID/:requestID', async (req, res) => {
     where: { customerID: customerID },
   })
 
-<<<<<<< HEAD
-  res.render("offer", { request, customer, offerCustomer })
-})
-
-dealerRouter.post("/send-offer/:customerID/:requestID", (req, res) => {
-=======
   const inventory = await models.Inventory.findAll({
     where: {dealerID: dealerID}
   })
@@ -160,7 +130,6 @@ dealerRouter.post("/send-offer/:customerID/:requestID", (req, res) => {
 
 dealerRouter.post('/send-offer/:customerID/:requestID', (req, res) => {
   
->>>>>>> aa7badfda14d424ae2a439f794675a430a3a84bb
   console.log(req.body)
 
   const dealerID = req.session.dealerID

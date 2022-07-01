@@ -23,10 +23,10 @@ const accountRouter = require("./routes/account")
 app.use("/account", accountRouter)
 
 const customerRouter = require("./routes/customer")
-app.use("/customer", customerRouter) // authenticationMW IMPLEMENT WHEN LOG IN FEATURE IS READY
+app.use("/customer", authenticationMW, customerRouter)
 
 const dealerRouter = require("./routes/dealer")
-app.use("/dealer", dealerRouter) // authenticationMW IMPLEMENT WHEN LOG IN FEATURE IS READY
+app.use("/dealer", authenticationMW, dealerRouter)
 
 const mustacheExpress = require("mustache-express")
 // setting up Express to use Mustache Express as template pages
@@ -38,7 +38,7 @@ app.set("view engine", "mustache")
 
 app.use(express.static("public"))
 
-let PORT = 8000
+let PORT = process.env.PORT || 8080
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
 })

@@ -1,16 +1,4 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
-    Create an Offer Page
-    
-</body>
-</html><html lang="en">
     <head>
       <link href="/css/style.css" rel="stylesheet" />
       <!-- CSS only -->
@@ -73,40 +61,38 @@
       <main class="container mt-4 py-5 text-center">
         
         <div class="row justify-content-center">
-            <div class="col-6 bg-light mt-4 rounded-3">
-    
+          
+          <h1>Create an Offer</h1>
+            
+
+          <div class="col-6 bg-light mt-4 rounded-3">
+
+                {{#request}} 
+        
                 <div class="row justify-content-center">
-                    <h1>Create an Offer</h1>
-                  </div>
-                  
-                  {{#request}} 
-          
-                    <div class="row justify-content-center">
-                        <div class="col-12 mt-5">
-                            <div class="row justify-content-center">
-                                {{#customer}}
-                                <h2>Customer: {{firstName}} {{lastName}}</h2>
-                                {{/customer}}
-                            </div>
-          
-                            <div class="row justify-content-center mt-3">
-                                <div class="col-10 bg-light rounded-3">
-                  
-                                  <h4>Request Details:</h4>
-                                  <h6>Make: {{make}}</h6>
-                                  <h6>Model: {{model}}</h6>
-                                  <h6>Year: {{minYear}} - {{maxYear}}</h6>
-                                  <h6>Color: {{color}}</h6>
-                                  <h6>Max Mileage: {{maxMileage}}</h6>
-                                </div>
-                                {{/request}}
-          
-                          </div>
-                        </div> 
-                      
-                    </div>
+                    <div class="col-12 mt-3">
+                      <div class="row justify-content-center">
+                          {{#customer}}
+                          <h3>Customer: {{firstName}} {{lastName}}</h3>
+                          {{/customer}}
+                      </div>
     
-            </div>
+                      <div class="row justify-content-center mt-3">
+                          <div class="col-10 bg-light rounded-3">
+            
+                            <h4>Request Details:</h4>
+                            <h6>Make: {{make}}</h6>
+                            <h6>Model: {{model}}</h6>
+                            <h6>Year: {{minYear}} - {{maxYear}}</h6>
+                            <h6>Color: {{color}}</h6>
+                            <h6>Max Mileage: {{maxMileage}}</h6>
+                          </div>
+                          {{/request}}
+    
+                      </div>
+                    </div> 
+                </div>
+          </div>
 
         </div>
 
@@ -114,9 +100,52 @@
             <div class="col-6 bg-light mt-4 rounded-3">
                 {{#request}}
                 <form method="POST" action="/dealer/send-offer/{{customerID}}/{{id}}">
-                {{/request}}
-                    <div class="row">
+                  {{/request}}
+                  
+                    <h4 class="mt-2">Inventory Cars</h4>
+                    <table class="table table-striped table-hover mt-4">
+                      <thead>
+                        <tr>
+                          <th scope="col">Listing ID</th>
+                          <th scope="col">Make</th>
+                          <th scope="col">Model</th>
+                          <th scope="col">Year</th>
+                          <th scope="col">Color</th>
+                          <th scope="col">Mileage</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#inventory}}
+                        <tr>
+                          <th class="align-middle" scope="row">{{id}}</th>
+                          <td class="align-middle">{{make}}</td>
+                          <td class="align-middle">{{model}}</td>
+                          <td class="align-middle">{{year}}</td>
+                          <td class="align-middle">{{color}}</td>
+                          <td class="align-middle">{{mileage}}</td>
+                          <!--<td class="text-align-middle"> -->
+                            
+                            <!-- Radio button for car selection -->
+      
+                            <!-- <div class="form-check text-align-middle">
+                                <input class="form-check-input" type="radio" name="offeredCar" id="offeredCar">
+                                <label class="form-check-label" for="offeredCar">
+                                 Select
+                                </label>
+                              </div>
+                            </td> -->
+
+                            <!-- <td class="align-middle">
+                              <button class="btn-sm rounded-3">Offer</button>
+                            </td> -->
+                          </tr>
+                          {{/inventory}}
+                        </tbody>
+                      </table>
+
+                      <div class="row">
                         <div class="col-6">
+<<<<<<< HEAD
                       
                         <label for="make" class="form-label ">Make:</label>
                         <select class="form-control" id="make" name="make" required>
@@ -126,50 +155,61 @@
                         <option>Ford</option>
                         <option>Volkswagen</option>
                         </select>
+=======
+                          <label for="modal-make" class="form-label ">Make:</label>
+                          <select class="form-control" id="modal-make" name="make" required>
+                          <option disabled selected hidden>Select Make</option>
+                          <option>Toyota</option>
+                          <option>Honda</option>
+                          <option>Ford</option>
+                          <option>Volkswagen</option>
+                          </select>
+>>>>>>> aa7badfda14d424ae2a439f794675a430a3a84bb
                         </div>
-    
+
                         <div class="col-6">
-                        <label for="model" class="form-label">Model:</label>
-                        <select class="form-control" id="model" name="model" required>
-                        <option disabled selected hidden>Select Model</option>
-                        <option>Camry</option>
-                        <option>Accord</option>
-                        <option>Explorer</option>
-                        <option>Jetta</option>
-                        </select>
+                          <label for="modal-model" class="form-label">Model:</label>
+                          <select class="form-control" id="modal-model" name="model" required>
+                          <option disabled selected hidden>Select Model</option>
+                          <option>Camry</option>
+                          <option>Accord</option>
+                          <option>Explorer</option>
+                          <option>Jetta</option>
+                          </select>
                         </div>
-                    </div>
-    
-                    <div class="row mt-4">
-    
+                      </div>
+
+                      <div class="row mt-4">
+
                         <div class="col-6">
-                        <label for="year" class="form-label">Year:</label>
-                            <div class= "form-control" id="year" name="year" required>
-                            <input type="number" min="1980" max="2023" step="1" value="2022" name="year"/>
+                          <label for="modal-year" class="form-label">Year:</label>
+                            <div class= "form-control" id="modal-year" name="year" required>
+                              <input type="number" min="1980" max="2023" step="1" value="2022" name="year"/>
                             </div>
                         </div>
-    
+
                         <div class="col-6">
-                        <label for="color" class="form-label">Color:</label>
-                        <select class="form-control" id="color" name="color" required>
-                        <option disabled selected hidden>Select Color</option>
-                        <option>White</option>
-                        <option>Black</option>
-                        <option>Gray</option>
-                        <option>Red</option>
-                        <option>Blue</option>
-                        <option>Silver</option>
-                        </select>
+                          <label for="modal-color" class="form-label">Color:</label>
+                          <select class="form-control" id="modal-color" name="color" required>
+                          <option disabled selected hidden>Select Color</option>
+                          <option>White</option>
+                          <option>Black</option>
+                          <option>Gray</option>
+                          <option>Red</option>
+                          <option>Blue</option>
+                          <option>Silver</option>
+                          </select>
                         </div>
-    
-                    </div>
-    
-                    <div class="row justify-content-center text-center mt-4">
-                        <div class="col-6 mb-3">
-                        
-                            <label for="mileage" class="form-label">Mileage: </label>
+
+                      </div>
+
+                      <div class="row justify-content-center text-center mt-4">
+                        <div class="col-10 mb-3">
+                          
+                            <label for="modal-mileage" class="form-label">Mileage: </label>
                             <output id ="result">50000</output>
                             <input type="range" class="form-range" min="0" max="250000" id="send" oninput= "result.value = send.value" name="mileage" value="50000">  
+<<<<<<< HEAD
     
                     </div>
     
@@ -190,7 +230,25 @@
                         <div class="col-4 mt-3">
                             <button class="btn btn-danger rounded-5">Send Offer</button>
                         </div>
+=======
+
+                      </div>
+                      
+                  <div class="row mt-4 justify-content-center">
+
+                    <div class="col-10">
+                      <label for="price" class="form-label">Offer Price: $</label>
+                          <input type="number" min="0" max="250000" step="10" value="20000" name="price"/>
+>>>>>>> aa7badfda14d424ae2a439f794675a430a3a84bb
                     </div>
+                  </div>
+                  
+                  <div class="row justify-content-center">
+                      <div class="col-4 mt-3">
+                          <button class="btn btn-danger rounded-5">Send Offer</button>
+                      </div>
+                  </div>
+                    
                 </form>
             </div>
 

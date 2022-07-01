@@ -31,12 +31,14 @@ dealerRouter.get("/dashboard", async (req, res) => {
   })
 
   const pendingOffers = await models.Offer.findAll({
-    where: {accepted: false},
+    where: {accepted: false,
+    dealerID: id},
     order: [["createdAt", "DESC"]]
   })
 
   const acceptedOffers = await models.Offer.findAll({
-    where: {accepted: true},
+    where: {accepted: true,
+    dealerID: id},
     order: [["createdAt", "DESC"]]
   })
 

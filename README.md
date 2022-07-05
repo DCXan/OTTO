@@ -7,12 +7,17 @@ A car shopping app that streamlines the car shopping experience!
 
 
 
-* **How to use the Dealer Dashboard:**
+* **How It Works:**
+   1. Customer creates a request by selecting the make, model, min/max years, color, and max mileage of the desired vehicle.
+   2. The request is sent to all dealers who currently have a vehicle in their inventory that matches the make and model of the requested vehicle.
+   3. A dealer can respond to the customer request by submitting an offer with information about their offered vehicle along with their best price.
+   4. Customer reviews all offers made on their request and accepts their favorite offer.
  
    
    
    
 * **Features of the app:**
+ 
    
 
 ## Live link: 

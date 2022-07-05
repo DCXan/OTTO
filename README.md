@@ -13,18 +13,19 @@ A car shopping app that streamlines the car shopping experience!
    **Step 4:** Customer reviews all offers made on their request and accepts their favorite offer.<br />
 
 * **Features of the App:**
-   * Separate customer and dealer accounts/dashboards
+   * Separate customer and dealer accounts log in from the same interface but are directed to different dashboards.
+   * Dealers can easily manage their inventory by adding and deleting vehicles.
+   * Car requests are automatically filtered based on a dealer's inventory so that dealers can just see the requests that they are able to fulfill.
+   * A customer can receive multiple offers from different dealers on the same request. Once the customer accepts an offer, the request is removed for all dealers.
    
- 
-   
-
 ## Live link: 
 https://otto-cars.herokuapp.com
 
-
+## Site Preview: 
+COMING SOON
 
 ## Introduction video of the project: 
-
+COMING SOON
 
 ## Database: 
 This project is built using PostgreSQL with Sequelize-Object Relational Mapping

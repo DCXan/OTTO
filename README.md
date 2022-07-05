@@ -22,7 +22,9 @@ A car shopping app that streamlines the car shopping experience!
 https://otto-cars.herokuapp.com
 
 ## Site Preview: 
-COMING SOON
+<div id="site-preview" align="center">
+<img src="public/images/homepage_screenshot.png" width="100%"/>
+</div>
 
 ## Introduction video of the project: 
 COMING SOON

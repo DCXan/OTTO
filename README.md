@@ -23,7 +23,7 @@ https://otto-cars.herokuapp.com
 
 ## Site Preview: 
 <div id="site-preview" align="center">
-<img src="public/images/homepage_screenshot.png" width="100%"/>
+<img src="public/images/homepage.gif" width="100%"/>
 </div>
 
 ## Introduction video of the project: 

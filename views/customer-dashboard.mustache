@@ -73,7 +73,7 @@
         <!-- MAIN DASHBOARD TABS -->
         <ul class="nav nav-tabs nav-fill border-bottom-2 border-secondary" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="inventory-tab" data-bs-toggle="tab" data-bs-target="#inventory-tab-pane" type="button" role="tab" aria-controls="inventory-tab-pane" aria-selected="true">Request</button>
+            <button class="nav-link active" id="request-tab" data-bs-toggle="tab" data-bs-target="#request-tab-pane" type="button" role="tab" aria-controls="request-tab-pane" aria-selected="true">Vehicle Requests</button>
           </li>
  
           <li class="nav-item" role="presentation">
@@ -85,9 +85,9 @@
 
         <div class="tab-content" id="myTabContent">
 
-          <!-- INVENTORY TAB -->
+          <!-- REQUESTS TAB -->
 
-          <div class="tab-pane fade show active" id="inventory-tab-pane" role="tabpanel" aria-labelledby="inventory-tab-pane" tabindex="0">
+          <div class="tab-pane fade show active" id="request-tab-pane" role="tabpanel" aria-labelledby="request-tab-pane" tabindex="0">
 
             <div class="row text-center">
 
@@ -95,7 +95,7 @@
               
                 <!-- ADD CAR BUTTON -->
 
-                <div class="btn btn-primary mt-4 mb-3 rounded-5" data-bs-toggle="modal" data-bs-target="#add-car-modal">Add New Car</div>
+                <div class="btn btn-primary mt-4 mb-3 rounded-5" data-bs-toggle="modal" data-bs-target="#add-car-modal">Request Vehicle</div>
 
                
                  
@@ -112,9 +112,9 @@
                               
                               <h5 class="card-title">{{make}} {{model}}</h5>
                               <h6 class="card-subtitle mb-2 text-muted">{{minYear}} - {{maxYear}}</h6>
-                              <p class="card-text">color : {{color}}</p>
-                              <p class="card-text">Max Mileage:{{maxMileage}}</p>
-                              <p class="card-text">Max Price:{{maxPrice}}</p>
+                              <p class="card-text">Color: {{color}}</p>
+                              <p class="card-text">Max Mileage: {{maxMileage}}</p>
+                              <p class="card-text">Max Price: ${{maxPrice}}</p>
 
                               
                               <input type="hidden" value="{{id}}" name="deleteID">
@@ -142,7 +142,7 @@
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="add-car-modal-title">Request a Car</h5>
+                    <h5 class="modal-title" id="add-car-modal-title">Request a Vehicle</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
 

@@ -150,9 +150,9 @@
 
                     <!-- Add Car FORM -->
                     <form method="POST" action="/customer/dashboard">
-                      <div class="row text-align-left">
+                      <div class="row text-left">
                         <div class="col-6">
-                          <label for="modal-make" class="form-label ">Make:</label>
+                          <label for="modal-make" class="form-label text-left">Make:</label>
                           <select class="form-control" id="modal-make" data-target="make" name="make" required>
                           <option disabled selected hidden>Select Make</option>
                           <option data-ref="Toyota">Toyota</option>
@@ -189,7 +189,7 @@
                         </div>
                       </div>
 
-                      <div class="row mt-4 text-align-left">
+                      <div class="row mt-4">
 
                         <div class="col-6">
                           <label for="modal-year" class="form-label">Year:</label>
@@ -230,7 +230,7 @@
                       <div class="row justify-content-center">
                         <div class="col-4 mt-3">
 
-                          <button class="btn btn-primary rounded-5">Submit Request</button>
+                          <button class="btn btn-primary rounded-5">Submit</button>
                         </div>
 
                       </div>
@@ -340,6 +340,10 @@
                         </div>
                         {{/myOffer}}    
                         </div> 
+
+                        <div class="text-center">
+                          {{^myOffers}} You have no offers yet. {{/myOffers}}
+                        </div>
                     </div>
         
         </div>

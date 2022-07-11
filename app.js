@@ -28,15 +28,25 @@ app.use("/customer", authenticationMW, customerRouter)
 const dealerRouter = require("./routes/dealer")
 app.use("/dealer", authenticationMW, dealerRouter)
 
+const path = require("path")
+
+const VIEWS_PATH = path.join(__dirname, "/views")
+
 const mustacheExpress = require("mustache-express")
 // setting up Express to use Mustache Express as template pages
-app.engine("mustache", mustacheExpress())
+app.engine("mustache", mustacheExpress(VIEWS_PATH + "/partials", ".mustache"))
 // the pages are located in views directory
-app.set("views", "./views")
+app.set("views", VIEWS_PATH)
 // extension will be .mustache
 app.set("view engine", "mustache")
 
 app.use(express.static("public"))
+// app.use((req, res, next) => {
+//   firstName = req.session.customerFirstName
+//   user = req.session.dealerFirstName
+
+//   next()
+// })
 
 let PORT = process.env.PORT || 8080
 app.listen(PORT, () => {

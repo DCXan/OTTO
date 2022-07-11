@@ -11,9 +11,9 @@ customerRouter.get("/dashboard", async (req, res) => {
     where: { customerID: id, accepted: false },
   })
   const myRequest = await models.carRequest.findAll({
-    where: { customerID: id }
+    where: { customerID: id },
   })
-  
+
   res.render("customer-dashboard", {
     request: myRequest,
     myOffer: linkOffer,

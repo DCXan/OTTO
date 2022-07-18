@@ -1,7 +1,7 @@
 
       <nav class="navbar fixed-top navbar-expand-lg bg-light">
         <div class="container">
-          <a class="navbar-brand p-0  align-bottom" href="/">
+          <a class="navbar-brand p-0 align-bottom" href="#">
             <img
         src="/images/small_logo.png"
         width="100"
@@ -22,18 +22,18 @@
           <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
             <ul class="navbar-nav">
              {{^authenticationMW}}
-              <li class="nav-item m-1">
+              <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
               </li>
-              <li class="nav-item m-1">
+              <li class="nav-item">
                 <a class="nav-link" href="/account/register">Register</a>
               </li>
               
-              <li class="nav-item m-1">
-                <a class="nav-link" href="#HIW">How It Works</a>
+              <li class="nav-item">
+                <a class="nav-link" href="/#HIW">How It Works</a>
               </li>
-              <li class="nav-item m-1">
-                <a class="nav-link" href="#contact-us">Contact Us</a>
+              <li class="nav-item">
+                <a class="nav-link" href="/#contact-us">Contact Us</a>
               </li>
               {{/authenticationMW}}
               {{#authenticationMW}}

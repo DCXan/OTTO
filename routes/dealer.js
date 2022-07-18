@@ -138,6 +138,7 @@ dealerRouter.get("/create-offer/:customerID/:requestID", async (req, res) => {
     request,
     customer,
     userProfile: userProfile,
+    user
   })
 })
 

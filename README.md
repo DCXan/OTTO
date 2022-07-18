@@ -21,6 +21,15 @@ A car shopping app that streamlines the car shopping experience!
 ## Live link: 
 https://otto-cars.herokuapp.com
 
+## Demo Credentials:
+**Dealer**
+Email: d@email.com
+Password: 123
+
+**Customer**
+Email: c@email.com
+Password: 123
+
 ## Site Preview: 
 <div id="site-preview" align="center">
 <img src="public/images/homepage.gif" width="100%"/>
